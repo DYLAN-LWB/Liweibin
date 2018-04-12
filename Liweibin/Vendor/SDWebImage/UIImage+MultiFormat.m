@@ -1,39 +1,73 @@
-//
-//  UIImage+MultiFormat.m
-//  SDWebImage
-//
-//  Created by Olivier Poitrey on 07/06/13.
-//  Copyright (c) 2013 Dailymotion. All rights reserved.
-//
+/*
+ * This file is part of the SDWebImage package.
+ * (c) Olivier Poitrey <rs@dailymotion.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 #import "UIImage+MultiFormat.h"
-#import "UIImage+GIF.h"
-#import "NSData+ImageContentType.h"
 
-#ifdef SD_WEBP
-#import "UIImage+WebP.h"
-#endif
+#import "objc/runtime.h"
+#import "SDWebImageCodersManager.h"
 
 @implementation UIImage (MultiFormat)
 
-+ (UIImage *)sd_imageWithData:(NSData *)data {
-    UIImage *image;
-    NSString *imageContentType = [NSData contentTypeForImageData:data];
-    if ([imageContentType isEqualToString:@"image/gif"]) {
-        image = [UIImage sd_animatedGIFWithData:data];
+#if SD_MAC
+- (NSUInteger)sd_imageLoopCount {
+    NSUInteger imageLoopCount = 0;
+    for (NSImageRep *rep in self.representations) {
+        if ([rep isKindOfClass:[NSBitmapImageRep class]]) {
+            NSBitmapImageRep *bitmapRep = (NSBitmapImageRep *)rep;
+            imageLoopCount = [[bitmapRep valueForProperty:NSImageLoopCount] unsignedIntegerValue];
+            break;
+        }
     }
-#ifdef SD_WEBP
-    else if ([imageContentType isEqualToString:@"image/webp"])
-    {
-        image = [UIImage sd_imageWithWebPData:data];
-    }
-#endif
-    else {
-        image = [[UIImage alloc] initWithData:data];
-    }
-
-
-    return image;
+    return imageLoopCount;
 }
+
+- (void)setSd_imageLoopCount:(NSUInteger)sd_imageLoopCount {
+    for (NSImageRep *rep in self.representations) {
+        if ([rep isKindOfClass:[NSBitmapImageRep class]]) {
+            NSBitmapImageRep *bitmapRep = (NSBitmapImageRep *)rep;
+            [bitmapRep setProperty:NSImageLoopCount withValue:@(sd_imageLoopCount)];
+            break;
+        }
+    }
+}
+
+#else
+
+- (NSUInteger)sd_imageLoopCount {
+    NSUInteger imageLoopCount = 0;
+    NSNumber *value = objc_getAssociatedObject(self, @selector(sd_imageLoopCount));
+    if ([value isKindOfClass:[NSNumber class]]) {
+        imageLoopCount = value.unsignedIntegerValue;
+    }
+    return imageLoopCount;
+}
+
+- (void)setSd_imageLoopCount:(NSUInteger)sd_imageLoopCount {
+    NSNumber *value = @(sd_imageLoopCount);
+    objc_setAssociatedObject(self, @selector(sd_imageLoopCount), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+#endif
+
++ (nullable UIImage *)sd_imageWithData:(nullable NSData *)data {
+    return [[SDWebImageCodersManager sharedInstance] decodedImageWithData:data];
+}
+
+- (nullable NSData *)sd_imageData {
+    return [self sd_imageDataAsFormat:SDImageFormatUndefined];
+}
+
+- (nullable NSData *)sd_imageDataAsFormat:(SDImageFormat)imageFormat {
+    NSData *imageData = nil;
+    if (self) {
+        imageData = [[SDWebImageCodersManager sharedInstance] encodedDataWithImage:self format:imageFormat];
+    }
+    return imageData;
+}
+
 
 @end

@@ -29,5 +29,7 @@
 //关闭启动页广告背景
 - (void)dismissCustomLaunchImage;
 
+//
+
 @end
 

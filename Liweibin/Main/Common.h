@@ -9,7 +9,6 @@
 #ifndef Common_h
 #define Common_h
 
-#import "WBTools.h"
 
 #import "AppDelegate.h"
 #import "WBBaseViewController.h"
@@ -19,53 +18,19 @@
 #import "AFNetworking.h"
 #import "WBTools.h"
 #import "WBAlertView.h"
-#import "WBCache.h"
-
-#define WBUserID            [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_ID]]
-#define WBUserKey           [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Key]]
-#define WBUserPhone         [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Phone]]
-#define WBUserGrade         [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Grade]]
-#define WBUserGradeID       [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_GradeID]]
-#define WBUserInviteCode    [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_InviteCode]]
-#define WBUserName          [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Name]]
-#define WBUserIcon          [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Icon]]
-#define WBUserToken         [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:User_Token]]
-
-//key
-#define User_ID             @"User_ID"
-#define User_Key            @"User_Key"
-#define User_Phone          @"User_Phone"
-#define User_Grade          @"User_Grade"
-#define User_GradeID        @"User_GradeID"
-#define User_InviteCode     @"User_InviteCode"
-#define User_JumpCode       @"User_JumpCode"
-#define User_Name           @"User_Name"
-#define User_Icon           @"User_Icon"
-#define User_Token          @"User_Token"
 
 
-//通知
-#define Notice_ShowLogin        @"Notice_ShowLogin"     //弹出登录页面
-#define Notice_LoginSuccess     @"LoginSuccess"         //登录成功
-#define Pay_Success             @"Pay_Success"          //支付成功
+#define WBString(str)   [NSString stringWithFormat:@"%@",str]   //转为字符串
 
-#define WBString(str)   [NSString stringWithFormat:@"%@",str]
+#define WBDefaultColor      [UIColor colorWithRed:255/255.f green:163/255.f blue:64/255.f alpha:1.f]    //默认主题颜色
+#define WBBackgroundColor   [UIColor colorWithRed:239/255.f green:240/255.f blue:241/255.f alpha:1.f]   //视图背景色
 
-#define NoLogin         ((WBUserKey.length < 10) || (WBUserID.length == 0) || ([WBUserID rangeOfString:@"null"].location != NSNotFound))
+#define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width   //屏幕宽高
+#define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
 
-
-
-#define WBDefaultColor      [WBTools colorWithHexValue:0xFFA340]  //默认主题颜色
-#define WBBackgroundColor   [WBTools colorWithHexValue:0xEFF0F1]  //视图背景色
-
-//
-#define WBFit(value)        ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
+#define WBFit(value)        ((value)/414.f*SCREEN_WIDTH)   //适配 6P为基准414.0f
 #define WBFont(font)        [UIFont systemFontOfSize:WBFit(font)]
 #define WBFontBold(font)    [UIFont boldSystemFontOfSize:WBFit(font)]
-
-//适配 6P为基准414.0f
-#define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
 
 #define SCREEN_35 ([UIScreen mainScreen].bounds.size.height == 480.f)    //320 480   @2x
 #define SCREEN_40 ([UIScreen mainScreen].bounds.size.height == 568.f)    //320 568   @2x

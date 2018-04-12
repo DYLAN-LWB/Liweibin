@@ -34,11 +34,13 @@ static NSMutableDictionary *ignoredCodingPropertyNamesDict_;
 
 + (NSMutableDictionary *)dictForKey:(const void *)key
 {
-    if (key == &MJAllowedPropertyNamesKey) return allowedPropertyNamesDict_;
-    if (key == &MJIgnoredPropertyNamesKey) return ignoredPropertyNamesDict_;
-    if (key == &MJAllowedCodingPropertyNamesKey) return allowedCodingPropertyNamesDict_;
-    if (key == &MJIgnoredCodingPropertyNamesKey) return ignoredCodingPropertyNamesDict_;
-    return nil;
+    @synchronized (self) {
+        if (key == &MJAllowedPropertyNamesKey) return allowedPropertyNamesDict_;
+        if (key == &MJIgnoredPropertyNamesKey) return ignoredPropertyNamesDict_;
+        if (key == &MJAllowedCodingPropertyNamesKey) return allowedCodingPropertyNamesDict_;
+        if (key == &MJIgnoredCodingPropertyNamesKey) return ignoredCodingPropertyNamesDict_;
+        return nil;
+    }
 }
 
 + (void)mj_enumerateClasses:(MJClassesEnumeration)enumeration
@@ -129,7 +131,7 @@ static NSMutableDictionary *ignoredCodingPropertyNamesDict_;
     return [self mj_totalObjectsWithSelector:@selector(mj_allowedCodingPropertyNames) key:&MJAllowedCodingPropertyNamesKey];
 }
 #pragma mark - block和方法处理:存储block的返回值
-+ (void)mj_setupBlockReturnValue:(id (^)())block key:(const char *)key
++ (void)mj_setupBlockReturnValue:(id (^)(void))block key:(const char *)key
 {
     if (block) {
         objc_setAssociatedObject(self, key, block(), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
