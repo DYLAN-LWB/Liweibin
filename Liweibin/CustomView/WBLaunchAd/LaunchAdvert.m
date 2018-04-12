@@ -35,8 +35,8 @@
     
     if (advertType == 1) {
         [self fullScreenAd];
-    } else {
-        [[AppDelegate manager] dismissCustomLaunchImage];
+    } else { 
+        [AppShared dismissCustomLaunchImage];
     }
 }
 
@@ -70,14 +70,13 @@
     [launchImageView sd_setImageWithURL:[NSURL URLWithString:WBString(self.adInfoDict[@"img"])]
                               completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                   if(error) {
-                                      [[AppDelegate manager] dismissCustomLaunchImage];
+                                      [AppShared dismissCustomLaunchImage];
                                   } else {
                                       
                                       //广告图片加载完成之后在出现跳过按钮
                                       weakCircleView.begin = YES;
                                       [weakCircleView addSubview:jumpBtn];
                                       
-                                      [AppDelegate manager].adLoadSuccess = YES;
                                       _countTime = CountDownTime;
                                       _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
                                   }
@@ -90,7 +89,7 @@
         [_countDownTimer invalidate];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[AppDelegate manager] dismissCustomLaunchImage];
+            [AppShared dismissCustomLaunchImage];
         });
     }
 }
@@ -103,11 +102,9 @@
         web.detailUrl = self.adUrl;
         web.detailTitle = self.adTitle ;
         web.view.tag = 678;
-        [[AppDelegate manager].window.rootViewController presentViewController:web animated:YES completion:nil];
+        [AppShared.window.rootViewController presentViewController:web animated:YES completion:nil];
         
-        [AppDelegate manager].isTaped = YES;
-        [[AppDelegate manager] dismissCustomLaunchImage];
-        
+        [AppShared dismissCustomLaunchImage];
     }
 }
 

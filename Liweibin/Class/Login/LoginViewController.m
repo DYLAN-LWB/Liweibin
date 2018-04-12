@@ -16,22 +16,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    param[@"username"] = @"18810536903";
+    param[@"password"] = @"123456";
+    
+    [[RequestManager sharedManger] requestPost:@"https://app.beisu100.com/beisuapp/user/login"
+                                        params:param
+                                       success:^(id response) {
+                                           NSLog(@"%@", response);
+                                           
+                                           WBModel *model = [WBModel modelWithKeyValues:(id)response];
+                                           if (model.code == 0) {
+                                               //保存用户信息
+                                               NSData *data = [NSJSONSerialization dataWithJSONObject:model.data
+                                                                                              options:NSJSONWritingPrettyPrinted
+                                                                                                error:nil];
+                                               [[NSUserDefaults standardUserDefaults] setObject:data
+                                                                                         forKey:@"user"];
+                                           }
+                                       }
+                                       failure:^(NSError *error) {
+                                           
+                                       }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

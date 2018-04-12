@@ -15,10 +15,9 @@
 #import "SDWebImageManager.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
-#import "AFNetworking.h"
 #import "WBTools.h"
 #import "WBAlertView.h"
-
+#import "RequestManager.h"
 
 #define WBString(str)   [NSString stringWithFormat:@"%@",str]   //转为字符串
 

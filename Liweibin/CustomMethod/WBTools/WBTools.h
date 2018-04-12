@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
-#import "MJExtension.h"
 
 @interface WBTools : NSObject
-
-//通过字典来创建一个模型
-+ (instancetype)modelWithKeyValues:(id)keyValues;
 
 //计算文字宽度/高度
 + (CGSize)sizeWithText:(NSString *)text width:(CGFloat)width height:(CGFloat)height font:(UIFont *)font;

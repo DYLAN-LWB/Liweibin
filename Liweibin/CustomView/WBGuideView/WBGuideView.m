@@ -27,7 +27,7 @@
     
     CGRect frame = [UIScreen mainScreen].bounds;
     WBGuideView *guideView = [[self alloc] initWithFrame:frame];
-    [[AppDelegate manager].window addSubview:guideView];
+    [AppShared.window addSubview:guideView];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -45,10 +45,6 @@
 //是否显示引导页
 - (BOOL)shouldShowIntroView {
     
-    //test
-//    WBAppDel.isShowingGuide = YES;
-//    return YES;
-    
     //获取沙盒中的版本号
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = (__bridge_transfer NSString *)kCFBundleVersionKey;
@@ -58,7 +54,6 @@
     NSString *currentVersion = md[key];
 
     if ([currentVersion compare:sandBoxVersion] == NSOrderedDescending) {
-        [AppDelegate manager].isShowingGuide = YES;
         //存储当前版本号
         [defaults setObject:currentVersion forKey:key];
         [defaults synchronize];
@@ -123,7 +118,6 @@
             self.alpha = 0;
             _viewPageControl.alpha = 0;
         } completion:^(BOOL finished) {
-            [AppDelegate manager].isShowingGuide = NO;
             [self removeFromSuperview];
             //启动页结束检查是否登录
 

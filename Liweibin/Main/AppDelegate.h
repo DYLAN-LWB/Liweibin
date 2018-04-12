@@ -7,29 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBModel.h"
 
+#define AppShared [AppDelegate sharedManger]
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (AppDelegate *)manager;
++ (AppDelegate *)sharedManger;
 
-@property (nonatomic, assign) BOOL isShowingAd;
-@property (nonatomic, assign) BOOL isShowingGuide;
+//用户信息模型
+@property (nonatomic, strong) WBUser *user;
 
-@property (nonatomic, assign) BOOL adLoadSuccess;
-@property (nonatomic, assign) BOOL isTaped;
 
-//缓存用户信息
-- (void)saveUserInfo:(NSDictionary *)info;
-//退出/异地登录,清空缓存信息
-- (void)loginOut;
 
 //关闭启动页广告背景
 - (void)dismissCustomLaunchImage;
 
-//
+
 
 @end
 

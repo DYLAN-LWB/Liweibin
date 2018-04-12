@@ -10,10 +10,6 @@
 
 @implementation WBTools
 
-+ (instancetype)modelWithKeyValues:(id)keyValues {
-    return [self mj_objectWithKeyValues:keyValues context:nil];
-}
-
 + (CGSize)sizeWithText:(NSString *)text width:(CGFloat)width height:(CGFloat)height font:(UIFont *)font {
     return [text boundingRectWithSize: CGSizeMake(width, height)
                               options: NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine
