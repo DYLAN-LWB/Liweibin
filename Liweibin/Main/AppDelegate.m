@@ -42,11 +42,12 @@
     
     //读取用户信息
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[ud objectForKey:@"user"]
-                                                         options:NSJSONReadingMutableLeaves
-                                                           error:nil];
-    self.user = [WBUser modelWithKeyValues:dict];
-    
+    NSData *data = [ud objectForKey:@"user"];
+    if (data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        self.user = [WBUser modelWithKeyValues:dict];
+    }
+
     NSLog(@"uid = %@", self.user.uid);
     NSLog(@"key = %@", self.user.key);
     
