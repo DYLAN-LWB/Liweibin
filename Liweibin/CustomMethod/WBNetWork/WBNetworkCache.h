@@ -1,5 +1,5 @@
 //
-//  WBCache.h
+//  WBNetworkCache.h
 //  BeiSu
 //
 //  Created by 李伟宾 on 2018/4/3.
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
-@interface WBCache : NSObject
+typedef void(^WBNetworkCacheCompletionBlock)(BOOL result);
+@interface WBNetworkCache : NSObject
 
 
 /**
@@ -44,7 +44,7 @@ typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
  *  @param URL             数据请求URL
  *  @param completedBlock  异步完成回调(主线程回调)
  */
-+(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable XHNetworkCacheCompletionBlock)completedBlock;
++(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable WBNetworkCacheCompletionBlock)completedBlock;
 
 /**
  *  写入/更新缓存(异步) [按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
@@ -54,7 +54,7 @@ typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
  *  @param params          数据请求参数(没有传nil)
  *  @param completedBlock  异步完成回调(主线程回调)
  */
-+(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL params:(nullable NSDictionary *)params completed:(nullable XHNetworkCacheCompletionBlock)completedBlock;
++(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL params:(nullable NSDictionary *)params completed:(nullable WBNetworkCacheCompletionBlock)completedBlock;
 
 /**
  *  获取缓存的对象(同步)

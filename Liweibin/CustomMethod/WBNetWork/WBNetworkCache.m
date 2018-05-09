@@ -1,15 +1,15 @@
 //
-//  WBCache.m
+//  WBNetworkCache.m
 //  BeiSu
 //
 //  Created by 李伟宾 on 2018/4/3.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "WBCache.h"
+#import "WBNetworkCache.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@implementation WBCache
+@implementation WBNetworkCache
 
 + (BOOL)saveJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL {
     return [self saveJsonResponseToCacheFile:jsonResponse andURL:URL params:nil];
@@ -22,12 +22,12 @@
     return[[NSFileManager defaultManager] createFileAtPath:[self cacheFilePathWithURL:URL params:params] contents:data attributes:nil];
 }
 
-+ (void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable XHNetworkCacheCompletionBlock)completedBlock {
++ (void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable WBNetworkCacheCompletionBlock)completedBlock {
     
     [self save_asyncJsonResponseToCacheFile:jsonResponse andURL:URL params:nil completed:completedBlock];
 }
 
-+ (void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL params:(nullable NSDictionary *)params completed:(nullable XHNetworkCacheCompletionBlock)completedBlock {
++ (void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL params:(nullable NSDictionary *)params completed:(nullable WBNetworkCacheCompletionBlock)completedBlock {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -132,7 +132,7 @@
 
 + (NSString *)cachePath {
     NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"XHNetworkCache"];
+    NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"WBNetworkCache"];
     return path;
 }
 
@@ -140,7 +140,6 @@
     
     if(URL== nil || URL.length == 0) return nil;
     NSString *fileName = [NSString stringWithFormat:@"URL:%@%@ AppVersion:%@",URL,[self paramsStringWithParams:params],[self appVersionString]];
-    //NSLog(@"flieName=%@",fileName);
     return  [self md5StringFromString:fileName];
 }
 

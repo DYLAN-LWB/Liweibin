@@ -1,5 +1,5 @@
 //
-//  RequestManager.h
+//  WBNetwork.h
 //  Beisu
 //
 //  Created by 李伟宾 on 15/11/30.
@@ -17,9 +17,9 @@ typedef void(^DownloadProgressBlock)(CGFloat progress, CGFloat totalMBRead, CGFl
 typedef void(^DownloadSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject);
 typedef void(^DownloadFailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
 
-@interface RequestManager : NSObject
+@interface WBNetwork : NSObject
 
-+ (RequestManager *)sharedManger;
++ (WBNetwork *)networkManger;
 
 #pragma mark - 请求接口
 

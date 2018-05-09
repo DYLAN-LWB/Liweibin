@@ -1,17 +1,17 @@
 //
-//  RequestManager.m
+//  WBNetwork.m
 //  Beisu
 //
 //  Created by 李伟宾 on 15/11/30.
 //  Copyright © 2015年 李伟宾. All rights reserved.
 //
 
-#import "RequestManager.h"
+#import "WBNetwork.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "WBReachability.h"
-#import "WBCache.h"
+#import "WBNetworkCache.h"
 
-@interface RequestManager()
+@interface WBNetwork()
 
 @property (nonatomic, strong) AFHTTPRequestOperation *manager;
 @property (nonatomic) AFHTTPRequestOperationManager  *requestManager;
@@ -19,12 +19,12 @@
 
 @end
 
-@implementation RequestManager
+@implementation WBNetwork
 
 #pragma mark - 单例
 
-+ (RequestManager *)sharedManger {
-    static RequestManager *instance = nil;
++ (WBNetwork *)networkManger {
+    static WBNetwork *instance = nil;
     
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -72,7 +72,7 @@
         success(responseObject);
         
         //接口数据写入缓存
-        [WBCache save_asyncJsonResponseToCacheFile:responseObject andURL:url params:params completed:^(BOOL result) { }];
+        [WBNetworkCache save_asyncJsonResponseToCacheFile:responseObject andURL:url params:params completed:^(BOOL result) { }];
         
         //检查异地登录
         WBModel *model = [WBModel modelWithKeyValues:responseObject];
@@ -83,7 +83,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
         //失败时检查是否有缓存
-        id responseCache = [WBCache cacheJsonWithURL:url params:params];
+        id responseCache = [WBNetworkCache cacheJsonWithURL:url params:params];
         if (responseCache) {
             success(responseCache);
         } else {

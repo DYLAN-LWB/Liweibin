@@ -29,7 +29,7 @@
         || [self.VCClass isEqualToString:@"DiscoverViewController"]
         || [self.VCClass isEqualToString:@"PersonViewController"]) {
         
-//        [[AppDelegate sharedManger].tabBarController setTabBarHidden:NO];
+//        [[AppDelegate networkManger].tabBarController setTabBarHidden:NO];
     }
     
  
@@ -42,7 +42,7 @@
         || [self.VCClass isEqualToString:@"DiscoverViewController"]
         || [self.VCClass isEqualToString:@"PersonViewController"]) {
         
-//        [[AppDelegate sharedManger].tabBarController setTabBarHidden:YES];
+//        [[AppDelegate networkManger].tabBarController setTabBarHidden:YES];
     }
     
 }

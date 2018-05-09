@@ -48,8 +48,6 @@
         self.user = [WBUser modelWithKeyValues:dict];
     }
 
-    NSLog(@"uid = %@", self.user.uid);
-    NSLog(@"key = %@", self.user.key);
     
     return YES;
 }
@@ -59,8 +57,6 @@
 - (void)dismissCustomLaunchImage {
     
 }
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

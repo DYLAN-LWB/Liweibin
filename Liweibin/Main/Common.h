@@ -17,7 +17,7 @@
 #import "MJRefresh.h"
 #import "WBTools.h"
 #import "WBAlertView.h"
-#import "RequestManager.h"
+#import "WBNetwork.h"
 
 #define WBString(str)   [NSString stringWithFormat:@"%@",str]   //转为字符串
 

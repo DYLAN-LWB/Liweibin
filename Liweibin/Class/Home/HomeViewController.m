@@ -19,7 +19,10 @@
 
     self.navTitle = @"首页";
     
-
+    
+    
+    NSLog(@"uid = %@", AppShared.user.uid);
+    NSLog(@"key = %@", AppShared.user.key);
 }
 
 

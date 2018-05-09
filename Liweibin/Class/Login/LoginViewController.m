@@ -21,7 +21,7 @@
     param[@"username"] = @"18810536903";
     param[@"password"] = @"123456";
     
-    [[RequestManager sharedManger] requestPost:@"https://app.beisu100.com/beisuapp/user/login"
+    [[WBNetwork networkManger] requestPost:@"https://app.beisu100.com/beisuapp/user/login"
                                         params:param
                                        success:^(id response) {
                                            NSLog(@"%@", response);
