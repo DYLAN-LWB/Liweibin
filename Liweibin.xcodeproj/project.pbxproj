@@ -68,6 +68,7 @@
 		529EAD3420A3FA1400E790BD /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529EAD3320A3FA1400E790BD /* UMCommon.framework */; };
 		529EAD4120A4218100E790BD /* WBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD3A20A416AE00E790BD /* WBCommon.m */; };
 		529EAD4420A4233A00E790BD /* WBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4320A4233A00E790BD /* WBUser.m */; };
+		529EAD4720A4254B00E790BD /* WBShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4520A4254A00E790BD /* WBShareView.m */; };
 		52A6E26F2084740800F43217 /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A6E26E2084740800F43217 /* WBModel.m */; };
 		52C4FB33207C572800A4077B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C4FB32207C572800A4077B /* Assets.xcassets */; };
 		52C4FB47207C5FFD00A4077B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C4FB46207C5FFD00A4077B /* HomeViewController.m */; };
@@ -243,6 +244,8 @@
 		529EAD3A20A416AE00E790BD /* WBCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBCommon.m; sourceTree = "<group>"; };
 		529EAD4220A4233A00E790BD /* WBUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WBUser.h; path = ../../../WBUser.h; sourceTree = "<group>"; };
 		529EAD4320A4233A00E790BD /* WBUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WBUser.m; path = ../../../WBUser.m; sourceTree = "<group>"; };
+		529EAD4520A4254A00E790BD /* WBShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBShareView.m; sourceTree = "<group>"; };
+		529EAD4620A4254A00E790BD /* WBShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBShareView.h; sourceTree = "<group>"; };
 		52A6E26D2084740800F43217 /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		52A6E26E2084740800F43217 /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		52C4FB32207C572800A4077B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 		5235DA99207F017D0000503C /* WBShareView */ = {
 			isa = PBXGroup;
 			children = (
+				529EAD4620A4254A00E790BD /* WBShareView.h */,
+				529EAD4520A4254A00E790BD /* WBShareView.m */,
 			);
 			path = WBShareView;
 			sourceTree = "<group>";
@@ -1063,7 +1068,7 @@
 				TargetAttributes = {
 					52E011A1207C54B8007450EA = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1135,6 +1140,7 @@
 				5235DAE3207F22C70000503C /* AFURLConnectionOperation.m in Sources */,
 				52C4FD7A207CA66B00A4077B /* SDImageCacheConfig.m in Sources */,
 				52C4FD78207CA66B00A4077B /* SDAnimatedImageRep.m in Sources */,
+				529EAD4720A4254B00E790BD /* WBShareView.m in Sources */,
 				52C4FD7E207CA66B00A4077B /* SDWebImageCompat.m in Sources */,
 				52C4FCCD207CA5AF00A4077B /* MJRefreshAutoGifFooter.m in Sources */,
 				52C4FD2A207CA63700A4077B /* MJExtensionConst.m in Sources */,
@@ -1342,8 +1348,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M2SF8EFK6B;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TQ3GK7N8WA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1362,8 +1368,10 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liweibin.Liweibin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wanxiangsiwei.beisu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0bfc6cbe-1f0c-4fac-be91-8e234a677711";
+				PROVISIONING_PROFILE_SPECIFIER = beisu_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1373,8 +1381,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M2SF8EFK6B;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TQ3GK7N8WA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1393,8 +1402,10 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liweibin.Liweibin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wanxiangsiwei.beisu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f3df57fd-4fce-4f8f-addc-fdd615913764";
+				PROVISIONING_PROFILE_SPECIFIER = beisu_hoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -13,6 +13,7 @@
 - (void)initCommonParam;
 
 @property (nonatomic , copy) NSString   *shareUrl;
+@property (nonatomic , copy) NSString   *UMengAppKey;
 @property (nonatomic , copy) NSString   *wechatAppKey;
 @property (nonatomic , copy) NSString   *wechatAppSecret;
 @property (nonatomic , copy) NSString   *qqAppKey;

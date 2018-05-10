@@ -11,7 +11,6 @@
 #import "PersonViewController.h"
 #import "WBTabbarViewController.h"
 
-#import <UMShare/UMShare.h>
 
 @interface AppDelegate ()
 
@@ -80,8 +79,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-
+#pragma mark - 友盟
 - (void)initUMengShare {
+    
+    //初始化友盟
+    [UMConfigure initWithAppkey:AppManger.common.UMengAppKey channel:@"App Store"];
     
     //关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
@@ -101,4 +103,23 @@
                                      redirectURL:AppManger.common.shareUrl];
   
 }
+
+//设置系统回调
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (!result) {
+        //其他如支付等SDK的回调
+    }
+    return result;
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
 @end

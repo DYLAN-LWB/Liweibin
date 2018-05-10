@@ -12,6 +12,7 @@
 
 - (void)initCommonParam {
     self.shareUrl = @"http://www.beisu100.com/app/qr/ad/ad001.html";
+    self.UMengAppKey = @"568093ede0f55af33e0022cf";
     self.wechatAppKey = @"wx782f1e709ffdaf1e";
     self.wechatAppSecret = @"0cf8a47d8a1740c833b61ca57ed4066c";
     self.qqAppKey = @"1105050670";
