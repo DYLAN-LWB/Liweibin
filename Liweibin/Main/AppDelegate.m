@@ -11,6 +11,7 @@
 #import "PersonViewController.h"
 #import "WBTabbarViewController.h"
 
+#import <UMShare/UMShare.h>
 
 @interface AppDelegate ()
 
@@ -27,6 +28,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.common = [[WBCommon alloc] init];
+    [self.common initCommonParam];
     
 
     WBTabbarViewController *tabbar = [[WBTabbarViewController alloc] init];
@@ -48,16 +52,18 @@
         self.user = [WBUser modelWithKeyValues:dict];
     }
 
+
+    [self initUMengShare];
     
     return YES;
 }
+
 
 
 //关闭启动页广告背景
 - (void)dismissCustomLaunchImage {
     
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
@@ -75,4 +81,24 @@
 }
 
 
+- (void)initUMengShare {
+    
+    //关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
+    [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+    
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession
+                                          appKey:AppManger.common.wechatAppKey
+                                       appSecret:AppManger.common.wechatAppSecret
+                                     redirectURL:AppManger.common.shareUrl];
+
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ
+                                          appKey:AppManger.common.qqAppKey
+                                       appSecret:nil
+                                     redirectURL:AppManger.common.shareUrl];
+  
+}
 @end

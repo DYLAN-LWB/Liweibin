@@ -91,9 +91,9 @@
             WBReachability *reach = [WBReachability WBreachabilityForInternetConnection];
             WBNetworkStatus status = [reach WBcurrentReachabilityStatus];
             if (status == 0) {
-                [WBAlertView showMessageToast:@"请检查您的网络" toView:AppShared.window];
+                [WBAlertView showMessageToast:@"请检查您的网络" toView:AppManger.window];
             } else {
-                [WBAlertView showMessageToast:@"服务器连接失败,请稍后再试" toView:AppShared.window];
+                [WBAlertView showMessageToast:@"服务器连接失败,请稍后再试" toView:AppManger.window];
             }
         }
     }];

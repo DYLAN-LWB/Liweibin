@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBCommon.h"
 #import "WBModel.h"
+#import "WBUser.h"
 
-#define AppShared [AppDelegate sharedManger]
+#define AppManger [AppDelegate sharedManger]
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,6 +22,9 @@
 //用户信息模型
 @property (nonatomic, strong) WBUser *user;
 
+
+//公共信息表
+@property (nonatomic, strong) WBCommon *common;
 
 
 //关闭启动页广告背景

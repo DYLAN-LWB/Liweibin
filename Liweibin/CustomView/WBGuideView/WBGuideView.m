@@ -27,7 +27,7 @@
     
     CGRect frame = [UIScreen mainScreen].bounds;
     WBGuideView *guideView = [[self alloc] initWithFrame:frame];
-    [AppShared.window addSubview:guideView];
+    [AppManger.window addSubview:guideView];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -68,9 +68,9 @@
     NSArray *array35 = @[[UIImage imageNamed:@"guide_35_01"], [UIImage imageNamed:@"guide_35_02"], [UIImage imageNamed:@"guide_35_03"]];
     NSArray *array55 = @[[UIImage imageNamed:@"guide_55_01"], [UIImage imageNamed:@"guide_55_02"], [UIImage imageNamed:@"guide_55_03"]];
 //
-    self.imageArray = SCREEN_35 ? array35 : array55;
+    self.imageArray = AppManger.common.is35Inch ? array35 : array55;
     _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * (self.imageArray.count + 1), SCREEN_HEIGHT);
+    _scrollView.contentSize = CGSizeMake(AppManger.common.screenWidth * (self.imageArray.count + 1), AppManger.common.screenHeight);
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = NO;
@@ -79,7 +79,7 @@
     // 显示的图片
     for (int i = 0; i < self.imageArray.count; i++) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(AppManger.common.screenWidth*i, 0, AppManger.common.screenWidth, AppManger.common.screenHeight)];
         if (i == self.imageArray.count - 1) {
             _lastPageView = view;
         }
@@ -93,7 +93,7 @@
     }
     
     //pageControl
-    _viewPageControl = [[WBPageControl alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT*0.9, SCREEN_WIDTH, 50)];
+    _viewPageControl = [[WBPageControl alloc] initWithFrame:CGRectMake(0, AppManger.common.screenHeight*0.9, AppManger.common.screenWidth, 50)];
     _viewPageControl.numberOfPages = self.imageArray.count;
     _viewPageControl.currentPage = 0;
     _viewPageControl.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.5, 1.5);

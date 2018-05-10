@@ -55,7 +55,7 @@
 
 - (void)setupTabbarView {
     
-    self.tabBarView = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,self.tabBarHeight)];
+    self.tabBarView = [[UIView alloc] initWithFrame:CGRectMake(0,0,AppManger.common.screenWidth,self.tabBarHeight)];
     [self.tabBar addSubview:self.tabBarView];
     
     [self.tabBar setShadowImage:[[UIImage alloc] init]];
@@ -68,11 +68,11 @@
     int num = (int)self.controllerArray.count;
     for(int i = 0; i < num; i++) {
         
-        WBTabbarButton *button = [[WBTabbarButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/num*i, 0, SCREEN_WIDTH/num, self.tabBarHeight)];
+        WBTabbarButton *button = [[WBTabbarButton alloc] initWithFrame:CGRectMake(AppManger.common.screenWidth/num*i, 0, AppManger.common.screenWidth/num, self.tabBarHeight)];
         button.tag = 1000 + i;
         button.titleLabel.font = [UIFont systemFontOfSize:11];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [button setTitleColor:WBDefaultColor forState:UIControlStateSelected];
+        [button setTitleColor:AppManger.common.defaultThemeColor forState:UIControlStateSelected];
         [button setTitle:self.titleArray[i] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:self.imageArray[i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:self.selImageArray[i]] forState:UIControlStateSelected];

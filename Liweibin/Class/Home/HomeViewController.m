@@ -21,8 +21,8 @@
     
     
     
-    NSLog(@"uid = %@", AppShared.user.uid);
-    NSLog(@"key = %@", AppShared.user.key);
+    NSLog(@"uid = %@", AppManger.user.uid);
+    NSLog(@"key = %@", AppManger.user.key);
 }
 
 

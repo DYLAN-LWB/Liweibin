@@ -36,7 +36,7 @@
     if (advertType == 1) {
         [self fullScreenAd];
     } else { 
-        [AppShared dismissCustomLaunchImage];
+        [AppManger dismissCustomLaunchImage];
     }
 }
 
@@ -44,7 +44,7 @@
     self.adUrl = WBString(self.adInfoDict[@"url"]);
     self.adTitle  = WBString(self.adInfoDict[@"explain"]);
     
-    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1.52 * SCREEN_WIDTH)];
+    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, 1.52 * AppManger.common.screenWidth)];
     launchImageView.contentMode = UIViewContentModeScaleAspectFit;
     launchImageView.userInteractionEnabled = YES;
     launchImageView.backgroundColor = [UIColor clearColor];
@@ -52,7 +52,7 @@
     [self addSubview:launchImageView];
 
     
-    CircleView *circleView = [[CircleView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - WBFit(65), WBFit(26), WBFit(40), WBFit(40))];
+    CircleView *circleView = [[CircleView alloc] initWithFrame:CGRectMake(AppManger.common.screenWidth - WBFit(65), WBFit(26), WBFit(40), WBFit(40))];
     circleView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.66];
     circleView.layer.masksToBounds = YES;
     circleView.layer.cornerRadius = WBFit(20);
@@ -70,7 +70,7 @@
     [launchImageView sd_setImageWithURL:[NSURL URLWithString:WBString(self.adInfoDict[@"img"])]
                               completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                   if(error) {
-                                      [AppShared dismissCustomLaunchImage];
+                                      [AppManger dismissCustomLaunchImage];
                                   } else {
                                       
                                       //广告图片加载完成之后在出现跳过按钮
@@ -89,7 +89,7 @@
         [_countDownTimer invalidate];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [AppShared dismissCustomLaunchImage];
+            [AppManger dismissCustomLaunchImage];
         });
     }
 }
@@ -102,9 +102,9 @@
         web.detailUrl = self.adUrl;
         web.detailTitle = self.adTitle ;
         web.view.tag = 678;
-        [AppShared.window.rootViewController presentViewController:web animated:YES completion:nil];
+        [AppManger.window.rootViewController presentViewController:web animated:YES completion:nil];
         
-        [AppShared dismissCustomLaunchImage];
+        [AppManger dismissCustomLaunchImage];
     }
 }
 

@@ -52,22 +52,22 @@
     [super viewDidLoad];
 
     self.VCClass = [NSString stringWithFormat:@"%@", self.class];
-    self.view.backgroundColor = WBBackgroundColor;
+    self.view.backgroundColor = AppManger.common.defaultBcakgroundColor;
     
     //添加自定义nav视图
-    self.navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAV_H)];
-    self.navigationView.backgroundColor = WBDefaultColor;
+    self.navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.navHeight)];
+    self.navigationView.backgroundColor = AppManger.common.defaultThemeColor;
     [self.view addSubview:self.navigationView];
 
     //添加标题
-    self.navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(WBFit(100), NAV_H-44, SCREEN_WIDTH-WBFit(200), 44)];
+    self.navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(WBFit(100), AppManger.common.navHeight-44, AppManger.common.screenWidth-WBFit(200), 44)];
     self.navTitleLabel.textColor = [UIColor whiteColor];
     self.navTitleLabel.font = [UIFont systemFontOfSize:20];
     self.navTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.navigationView addSubview:self.navTitleLabel];
     
     //添加返回按钮
-    self.navBackButton = [[UIButton alloc] initWithFrame:CGRectMake(0, NAV_H-44, 50, 40)];
+    self.navBackButton = [[UIButton alloc] initWithFrame:CGRectMake(0, AppManger.common.navHeight-44, 50, 40)];
     [self.navBackButton setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
     [self.navBackButton setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateHighlighted];
     [self.navBackButton setImageEdgeInsets:UIEdgeInsetsMake(5, 15, 5, 5)];
@@ -124,8 +124,8 @@
 
 //避免横屏时出现错误
 - (void)viewWillLayoutSubviews {
-    self.navigationView.frame = CGRectMake(0, 0, SCREEN_WIDTH, NAV_H);
-    self.navTitleLabel.frame = CGRectMake(WBFit(100), NAV_H-44, SCREEN_WIDTH-WBFit(200), 44);
+    self.navigationView.frame = CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.navHeight);
+    self.navTitleLabel.frame = CGRectMake(WBFit(100), AppManger.common.navHeight-44, AppManger.common.screenWidth-WBFit(200), 44);
 }
 
 //设置标题
