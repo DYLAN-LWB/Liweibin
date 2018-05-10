@@ -68,7 +68,7 @@
 		529EAD3420A3FA1400E790BD /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529EAD3320A3FA1400E790BD /* UMCommon.framework */; };
 		529EAD4120A4218100E790BD /* WBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD3A20A416AE00E790BD /* WBCommon.m */; };
 		529EAD4420A4233A00E790BD /* WBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4320A4233A00E790BD /* WBUser.m */; };
-		529EAD4720A4254B00E790BD /* WBShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4520A4254A00E790BD /* WBShareView.m */; };
+		529EAD4B20A43C1800E790BD /* WBShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4A20A43C1800E790BD /* WBShare.m */; };
 		52A6E26F2084740800F43217 /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A6E26E2084740800F43217 /* WBModel.m */; };
 		52C4FB33207C572800A4077B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C4FB32207C572800A4077B /* Assets.xcassets */; };
 		52C4FB47207C5FFD00A4077B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C4FB46207C5FFD00A4077B /* HomeViewController.m */; };
@@ -244,8 +244,8 @@
 		529EAD3A20A416AE00E790BD /* WBCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBCommon.m; sourceTree = "<group>"; };
 		529EAD4220A4233A00E790BD /* WBUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WBUser.h; path = ../../../WBUser.h; sourceTree = "<group>"; };
 		529EAD4320A4233A00E790BD /* WBUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WBUser.m; path = ../../../WBUser.m; sourceTree = "<group>"; };
-		529EAD4520A4254A00E790BD /* WBShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBShareView.m; sourceTree = "<group>"; };
-		529EAD4620A4254A00E790BD /* WBShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBShareView.h; sourceTree = "<group>"; };
+		529EAD4920A43C1800E790BD /* WBShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WBShare.h; path = ../../../../WBShare.h; sourceTree = "<group>"; };
+		529EAD4A20A43C1800E790BD /* WBShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WBShare.m; path = ../../../../WBShare.m; sourceTree = "<group>"; };
 		52A6E26D2084740800F43217 /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		52A6E26E2084740800F43217 /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		52C4FB32207C572800A4077B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -452,6 +452,7 @@
 		5235DA68207F017D0000503C /* CustomMethod */ = {
 			isa = PBXGroup;
 			children = (
+				529EAD4820A43C0000E790BD /* WBShare */,
 				5235DAC6207F0D840000503C /* WBNetWork */,
 				5235DAE9207F23470000503C /* WBReachbility */,
 				5235DA6E207F017D0000503C /* WBTools */,
@@ -475,7 +476,6 @@
 				5235DA8E207F017D0000503C /* WBCircleView */,
 				5235DA91207F017D0000503C /* WBGuideView */,
 				5235DA96207F017D0000503C /* WBLaunchAd */,
-				5235DA99207F017D0000503C /* WBShareView */,
 				5235DA9A207F017D0000503C /* WBTabBar */,
 			);
 			path = CustomView;
@@ -547,15 +547,6 @@
 				5235DA98207F017D0000503C /* LaunchAdvert.m */,
 			);
 			path = WBLaunchAd;
-			sourceTree = "<group>";
-		};
-		5235DA99207F017D0000503C /* WBShareView */ = {
-			isa = PBXGroup;
-			children = (
-				529EAD4620A4254A00E790BD /* WBShareView.h */,
-				529EAD4520A4254A00E790BD /* WBShareView.m */,
-			);
-			path = WBShareView;
 			sourceTree = "<group>";
 		};
 		5235DA9A207F017D0000503C /* WBTabBar */ = {
@@ -664,6 +655,15 @@
 				52A6E26E2084740800F43217 /* WBModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		529EAD4820A43C0000E790BD /* WBShare */ = {
+			isa = PBXGroup;
+			children = (
+				529EAD4920A43C1800E790BD /* WBShare.h */,
+				529EAD4A20A43C1800E790BD /* WBShare.m */,
+			);
+			path = WBShare;
 			sourceTree = "<group>";
 		};
 		52C4FB35207C57B600A4077B /* Support */ = {
@@ -1140,7 +1140,6 @@
 				5235DAE3207F22C70000503C /* AFURLConnectionOperation.m in Sources */,
 				52C4FD7A207CA66B00A4077B /* SDImageCacheConfig.m in Sources */,
 				52C4FD78207CA66B00A4077B /* SDAnimatedImageRep.m in Sources */,
-				529EAD4720A4254B00E790BD /* WBShareView.m in Sources */,
 				52C4FD7E207CA66B00A4077B /* SDWebImageCompat.m in Sources */,
 				52C4FCCD207CA5AF00A4077B /* MJRefreshAutoGifFooter.m in Sources */,
 				52C4FD2A207CA63700A4077B /* MJExtensionConst.m in Sources */,
@@ -1152,6 +1151,7 @@
 				5235DAE8207F22C70000503C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				52C4FD81207CA66B00A4077B /* SDWebImageFrame.m in Sources */,
 				52C4FD9B207CA6F800A4077B /* WebViewJavascriptBridge_JS.m in Sources */,
+				529EAD4B20A43C1800E790BD /* WBShare.m in Sources */,
 				52C4FD8D207CA66B00A4077B /* UIImageView+HighlightedWebCache.m in Sources */,
 				52C4FD2E207CA63700A4077B /* MJPropertyType.m in Sources */,
 				52C4FD9A207CA6F800A4077B /* WebViewJavascriptBridge.m in Sources */,

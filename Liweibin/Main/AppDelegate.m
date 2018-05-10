@@ -31,7 +31,6 @@
     self.common = [[WBCommon alloc] init];
     [self.common initCommonParam];
     
-
     WBTabbarViewController *tabbar = [[WBTabbarViewController alloc] init];
     self.window.rootViewController = tabbar;
     
@@ -64,20 +63,7 @@
     
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-}
 
 #pragma mark - 友盟
 - (void)initUMengShare {
@@ -88,18 +74,14 @@
     //关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
     
-    /* 设置微信的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession
                                           appKey:AppManger.common.wechatAppKey
                                        appSecret:AppManger.common.wechatAppSecret
                                      redirectURL:AppManger.common.shareUrl];
 
-    /* 设置分享到QQ互联的appID
-     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
-     */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ
                                           appKey:AppManger.common.qqAppKey
-                                       appSecret:nil
+                                       appSecret:AppManger.common.qqAppSecret
                                      redirectURL:AppManger.common.shareUrl];
   
 }
@@ -113,6 +95,7 @@
     }
     return result;
 }
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
@@ -120,6 +103,22 @@
         // 其他如支付等SDK的回调
     }
     return result;
+}
+
+#pragma mark - appdelegate
+- (void)applicationWillResignActive:(UIApplication *)application {
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
 }
 
 @end

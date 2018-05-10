@@ -18,7 +18,7 @@
 #import "WBTools.h"
 #import "WBAlertView.h"
 #import "WBNetwork.h"
-#import "WBShareView.h"
+#import "WBShare.h"
 
 #import <UMCommon/UMCommon.h>
 #import <UMShare/UMShare.h>
