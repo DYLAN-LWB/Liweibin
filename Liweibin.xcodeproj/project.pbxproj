@@ -689,7 +689,7 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		52C4FB39207C5DAD00A4077B /* Class */ = {
+		52C4FB39207C5DAD00A4077B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				52C4FB3C207C5DE800A4077B /* Home */,
@@ -698,7 +698,7 @@
 				52C4FB55207C63A800A4077B /* Base */,
 				52C4FB3D207C5DE800A4077B /* Person */,
 			);
-			path = Class;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		52C4FB3C207C5DE800A4077B /* Home */ = {
@@ -1028,7 +1028,7 @@
 				529EAD3820A416A700E790BD /* Model */,
 				5235DA68207F017D0000503C /* CustomMethod */,
 				5235DA71207F017D0000503C /* CustomView */,
-				52C4FB39207C5DAD00A4077B /* Class */,
+				52C4FB39207C5DAD00A4077B /* ViewController */,
 				52C4FB36207C5DAD00A4077B /* Vendor */,
 				5235DA67207F017D0000503C /* ThirdLib */,
 				52C4FC82207C7DD800A4077B /* Resource */,
