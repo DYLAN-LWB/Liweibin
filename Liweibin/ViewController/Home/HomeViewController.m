@@ -31,6 +31,19 @@
     [share addTarget:self action:@selector(shareBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:share];
     
+    
+    UIButton *login = [UIButton buttonWithType:UIButtonTypeCustom];
+    login.frame = CGRectMake(100, 200, 222, 55);
+    login.backgroundColor = [UIColor redColor];
+    [login setTitle:@"login" forState:UIControlStateNormal];
+    [login addTarget:self action:@selector(loginBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:login];
+    
+    [self loginBtn];
+}
+
+- (void)loginBtn {
+    [[NSNotificationCenter defaultCenter] postNotificationName:AppManger.common.noticeShowLogin object:self userInfo:nil];
 }
 
 - (void)shareBtn {

@@ -32,8 +32,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.common = [[WBCommon alloc] init];
+    self.common = [[WBCommonModel alloc] init];
     [self.common initCommonParam];
+    
+    self.network = [[WBNetworkModel alloc] init];
+    [self.network initNetworkInterface];
     
     WBTabbarViewController *tabbar = [[WBTabbarViewController alloc] init];
     self.window.rootViewController = tabbar;
@@ -43,7 +46,7 @@
     //设置小红点
     [tabbar showPointMarkIndex:1];
     //不显示角标
-    //[tabbar hideMarkIndex:3];
+    [tabbar hideMarkIndex:3];
 
     
     //读取用户信息
@@ -51,7 +54,7 @@
     NSData *data = [ud objectForKey:@"user"];
     if (data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        self.user = [WBUser modelWithKeyValues:dict];
+        self.user = [WBUserModel modelWithKeyValues:dict];
     }
 
 

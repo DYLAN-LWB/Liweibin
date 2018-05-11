@@ -7,6 +7,7 @@
 //
 
 #import "WBTabbarViewController.h"
+#import "LoginAccountViewController.h"
 
 //数字角标直径
 #define NumMark_WH 20
@@ -29,16 +30,25 @@
     self = [super init];
     if (self) {
         
-        self.controllerArray = @[@"HomeViewController",@"PersonViewController"];
-        self.titleArray = @[@"首页",@"我的"];
-        self.imageArray = @[@"tab_01",@"tab_05"];
-        self.selImageArray  = @[@"tab_01_sel",@"tab_05_sel"];
+        self.controllerArray = @[@"HomeViewController",@"DiscoverViewController",@"PersonViewController"];
+        self.titleArray = @[@"首页",@"发现",@"我的"];
+        self.imageArray = @[@"tab_01",@"tab_04",@"tab_05"];
+        self.selImageArray  = @[@"tab_01_sel",@"tab_04_sel",@"tab_05_sel"];
         self.tabBarHeight = 49.0;
 
         [self setupViewControllers:self.controllerArray];
         [self setupTabbarView];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginController) name:AppManger.common.noticeShowLogin object:nil];
+
     }
     return self;
+}
+
+- (void)showLoginController {
+    LoginAccountViewController *login = [[LoginAccountViewController alloc] init];
+    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+    [self presentViewController:loginNav animated:YES completion:nil];
 }
 
 - (void)setupViewControllers:(NSArray *)controllers {

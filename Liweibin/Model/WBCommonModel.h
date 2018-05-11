@@ -1,5 +1,5 @@
 //
-//  WBCommon.h
+//  WBCommonModel.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/10.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WBCommon : NSObject
+@interface WBCommonModel : NSObject
 
 - (void)initCommonParam;
 
@@ -29,14 +29,20 @@
 @property (nonatomic , strong) UIColor   *defaultBcakgroundColor;
 
 //友盟
-@property (nonatomic , copy) NSString   *shareUrl;
 @property (nonatomic , copy) NSString   *UMengAppKey;
 @property (nonatomic , copy) NSString   *wechatAppKey;
 @property (nonatomic , copy) NSString   *wechatAppSecret;
 @property (nonatomic , copy) NSString   *qqAppKey;
 @property (nonatomic , copy) NSString   *qqAppSecret;
+@property (nonatomic , copy) NSString   *shareUrl;
+@property (nonatomic , copy) NSString   *shareImageUrl;
 
 //极光
 @property (nonatomic , copy) NSString   *JPushAppKey;
+
+//通知
+@property (nonatomic , copy) NSString   *noticeShowLogin;
+@property (nonatomic , copy) NSString   *noticePaySuccess;
+@property (nonatomic , copy) NSString   *noticeLoginSuccess;
 
 @end

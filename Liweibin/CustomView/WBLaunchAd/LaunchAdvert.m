@@ -1,6 +1,6 @@
 //
 //  LaunchAdvert.m
-//  BeiSu
+//  Liweibin
 //
 //  Created by 李伟宾 on 2017/10/17.
 //  Copyright © 2017年 李伟宾. All rights reserved.

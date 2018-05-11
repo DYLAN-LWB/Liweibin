@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WBCommon.h"
+#import "WBCommonModel.h"
 #import "WBModel.h"
-#import "WBUser.h"
+#import "WBUserModel.h"
+#import "WBNetworkModel.h"
 
 #define AppManger [AppDelegate sharedManger]
 
@@ -19,13 +20,12 @@
 
 + (AppDelegate *)sharedManger;
 
-//用户信息模型
-@property (nonatomic, strong) WBUser *user;
-
-
+//用户信息表
+@property (nonatomic, strong) WBUserModel *user;
 //公共信息表
-@property (nonatomic, strong) WBCommon *common;
-
+@property (nonatomic, strong) WBCommonModel *common;
+//网络接口表
+@property (nonatomic, strong) WBNetworkModel *network;
 
 //关闭启动页广告背景
 - (void)dismissCustomLaunchImage;

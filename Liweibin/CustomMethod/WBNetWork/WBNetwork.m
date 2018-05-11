@@ -1,6 +1,6 @@
 //
 //  WBNetwork.m
-//  Beisu
+//  Liweibin
 //
 //  Created by 李伟宾 on 15/11/30.
 //  Copyright © 2015年 李伟宾. All rights reserved.
@@ -66,6 +66,8 @@
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/css",@"text/plain",nil];
     [self.requestManager.operationQueue addOperation:operation];
     
+    NSLog(@"request url = %@", url);
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         //请求成功

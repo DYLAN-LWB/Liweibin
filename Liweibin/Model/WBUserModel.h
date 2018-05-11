@@ -1,5 +1,5 @@
 //
-//  WBUser.h
+//  WBUserModel.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/10.
@@ -8,7 +8,7 @@
 
 #import "WBModel.h"
 
-@interface WBUser : WBModel
+@interface WBUserModel : WBModel
 @property (nonatomic , copy) NSString              * key;
 @property (nonatomic , copy) NSString              * integral;
 @property (nonatomic , copy) NSString              * login_time;

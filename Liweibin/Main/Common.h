@@ -19,6 +19,8 @@
 #import "WBAlertView.h"
 #import "WBNetwork.h"
 #import "WBShare.h"
+#import "WBButton.h"
+#import "WebViewController.h"
 
 #import <UMCommon/UMCommon.h>
 #import <UMShare/UMShare.h>

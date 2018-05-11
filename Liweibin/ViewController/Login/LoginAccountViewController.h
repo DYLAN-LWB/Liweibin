@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  LoginAccountViewController.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/4/10.
@@ -8,6 +8,6 @@
 
 #import "WBBaseViewController.h"
 
-@interface LoginViewController : WBBaseViewController
+@interface LoginAccountViewController : WBBaseViewController
 
 @end

@@ -10,9 +10,13 @@
 
 @interface WebViewController : WBBaseViewController
 @property (nonatomic, copy) NSString *detailTitle;
+@property (nonatomic, copy) NSString *shareContent;
 @property (nonatomic, copy) NSString *detailUrl;
+@property (nonatomic, copy) NSString *detailImageUrl;
 
-@property (nonatomic, strong) UIImage *shareImage;
+
+
+@property (nonatomic, assign) BOOL hasParam;
 
 
 
