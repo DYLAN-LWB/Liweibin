@@ -65,10 +65,17 @@
 		5278FFCF20A3F2CE00A2A1B0 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5278FFC420A3F2CE00A2A1B0 /* libWeChatSDK.a */; };
 		5278FFD020A3F2CE00A2A1B0 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5278FFC520A3F2CE00A2A1B0 /* README.txt */; };
 		5278FFD220A3F44C00A2A1B0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5214D33A20A3EA65005E5344 /* SystemConfiguration.framework */; };
+		5285745520A52E2B00915DA2 /* jcore-ios-1.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745020A52E2B00915DA2 /* jcore-ios-1.1.9.a */; };
+		5285745720A52E2B00915DA2 /* jpush-ios-3.0.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745220A52E2B00915DA2 /* jpush-ios-3.0.9.a */; };
+		5285745920A52E4300915DA2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745820A52E4300915DA2 /* CFNetwork.framework */; };
+		5285745B20A52E4F00915DA2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745A20A52E4F00915DA2 /* CoreFoundation.framework */; };
+		5285745D20A52E6400915DA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745C20A52E6400915DA2 /* Security.framework */; };
+		5285745F20A52E7600915DA2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285745E20A52E7600915DA2 /* UserNotifications.framework */; };
+		5285746120A52E7E00915DA2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5285746020A52E7E00915DA2 /* libresolv.tbd */; };
+		5285746520A52EF300915DA2 /* WBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285746420A52EF300915DA2 /* WBUser.m */; };
+		5285746820A52EFF00915DA2 /* WBShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5285746720A52EFF00915DA2 /* WBShare.m */; };
 		529EAD3420A3FA1400E790BD /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529EAD3320A3FA1400E790BD /* UMCommon.framework */; };
 		529EAD4120A4218100E790BD /* WBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD3A20A416AE00E790BD /* WBCommon.m */; };
-		529EAD4420A4233A00E790BD /* WBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4320A4233A00E790BD /* WBUser.m */; };
-		529EAD4B20A43C1800E790BD /* WBShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD4A20A43C1800E790BD /* WBShare.m */; };
 		52A6E26F2084740800F43217 /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A6E26E2084740800F43217 /* WBModel.m */; };
 		52C4FB33207C572800A4077B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C4FB32207C572800A4077B /* Assets.xcassets */; };
 		52C4FB47207C5FFD00A4077B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C4FB46207C5FFD00A4077B /* HomeViewController.m */; };
@@ -239,13 +246,22 @@
 		5278FFC620A3F2CE00A2A1B0 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		5278FFC720A3F2CE00A2A1B0 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		5278FFC820A3F2CE00A2A1B0 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		5285745020A52E2B00915DA2 /* jcore-ios-1.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.9.a"; sourceTree = "<group>"; };
+		5285745220A52E2B00915DA2 /* jpush-ios-3.0.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.9.a"; sourceTree = "<group>"; };
+		5285745420A52E2B00915DA2 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		5285745820A52E4300915DA2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5285745A20A52E4F00915DA2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		5285745C20A52E6400915DA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5285745E20A52E7600915DA2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		5285746020A52E7E00915DA2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		5285746220A52E8F00915DA2 /* Liweibin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Liweibin.entitlements; sourceTree = "<group>"; };
+		5285746320A52EF300915DA2 /* WBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUser.h; sourceTree = "<group>"; };
+		5285746420A52EF300915DA2 /* WBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUser.m; sourceTree = "<group>"; };
+		5285746620A52EFF00915DA2 /* WBShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBShare.h; sourceTree = "<group>"; };
+		5285746720A52EFF00915DA2 /* WBShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBShare.m; sourceTree = "<group>"; };
 		529EAD3320A3FA1400E790BD /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
 		529EAD3920A416AE00E790BD /* WBCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBCommon.h; sourceTree = "<group>"; };
 		529EAD3A20A416AE00E790BD /* WBCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBCommon.m; sourceTree = "<group>"; };
-		529EAD4220A4233A00E790BD /* WBUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WBUser.h; path = ../../../WBUser.h; sourceTree = "<group>"; };
-		529EAD4320A4233A00E790BD /* WBUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WBUser.m; path = ../../../WBUser.m; sourceTree = "<group>"; };
-		529EAD4920A43C1800E790BD /* WBShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WBShare.h; path = ../../../../WBShare.h; sourceTree = "<group>"; };
-		529EAD4A20A43C1800E790BD /* WBShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WBShare.m; path = ../../../../WBShare.m; sourceTree = "<group>"; };
 		52A6E26D2084740800F43217 /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		52A6E26E2084740800F43217 /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		52C4FB32207C572800A4077B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -409,19 +425,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5285746120A52E7E00915DA2 /* libresolv.tbd in Frameworks */,
+				5285745F20A52E7600915DA2 /* UserNotifications.framework in Frameworks */,
+				5285745D20A52E6400915DA2 /* Security.framework in Frameworks */,
+				5214D33D20A3EA6C005E5344 /* CoreTelephony.framework in Frameworks */,
+				5285745B20A52E4F00915DA2 /* CoreFoundation.framework in Frameworks */,
+				5285745920A52E4300915DA2 /* CFNetwork.framework in Frameworks */,
 				5278FFD220A3F44C00A2A1B0 /* SystemConfiguration.framework in Frameworks */,
 				5214D34120A3EA7D005E5344 /* libz.tbd in Frameworks */,
 				5214D33F20A3EA78005E5344 /* libc++.tbd in Frameworks */,
 				529EAD3420A3FA1400E790BD /* UMCommon.framework in Frameworks */,
 				5278FFCF20A3F2CE00A2A1B0 /* libWeChatSDK.a in Frameworks */,
 				5278FFCA20A3F2CE00A2A1B0 /* UMShare.framework in Frameworks */,
-				5214D33D20A3EA6C005E5344 /* CoreTelephony.framework in Frameworks */,
+				5285745720A52E2B00915DA2 /* jpush-ios-3.0.9.a in Frameworks */,
 				5214D33920A3EA4D005E5344 /* CoreGraphics.framework in Frameworks */,
 				5278FFCD20A3F2CE00A2A1B0 /* libSocialWeChat.a in Frameworks */,
 				5278FFC920A3F2CE00A2A1B0 /* libSocialQQ.a in Frameworks */,
 				5214D33720A3EA43005E5344 /* libsqlite3.tbd in Frameworks */,
 				5278FFCC20A3F2CE00A2A1B0 /* UShareUI.framework in Frameworks */,
 				5278FFCE20A3F2CE00A2A1B0 /* libSocialOfficialWeChat.a in Frameworks */,
+				5285745520A52E2B00915DA2 /* jcore-ios-1.1.9.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +454,11 @@
 		5214D33520A3EA42005E5344 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5285746020A52E7E00915DA2 /* libresolv.tbd */,
+				5285745E20A52E7600915DA2 /* UserNotifications.framework */,
+				5285745C20A52E6400915DA2 /* Security.framework */,
+				5285745A20A52E4F00915DA2 /* CoreFoundation.framework */,
+				5285745820A52E4300915DA2 /* CFNetwork.framework */,
 				5214D34020A3EA7D005E5344 /* libz.tbd */,
 				5214D33E20A3EA78005E5344 /* libc++.tbd */,
 				5214D33C20A3EA6C005E5344 /* CoreTelephony.framework */,
@@ -444,6 +472,7 @@
 		5235DA67207F017D0000503C /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				5285744F20A52E2B00915DA2 /* JPush */,
 				5278FFB720A3F2CE00A2A1B0 /* UMShare */,
 			);
 			path = ThirdLib;
@@ -644,13 +673,23 @@
 			path = WechatSDK;
 			sourceTree = "<group>";
 		};
+		5285744F20A52E2B00915DA2 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				5285745020A52E2B00915DA2 /* jcore-ios-1.1.9.a */,
+				5285745220A52E2B00915DA2 /* jpush-ios-3.0.9.a */,
+				5285745420A52E2B00915DA2 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
 		529EAD3820A416A700E790BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				529EAD3920A416AE00E790BD /* WBCommon.h */,
 				529EAD3A20A416AE00E790BD /* WBCommon.m */,
-				529EAD4220A4233A00E790BD /* WBUser.h */,
-				529EAD4320A4233A00E790BD /* WBUser.m */,
+				5285746320A52EF300915DA2 /* WBUser.h */,
+				5285746420A52EF300915DA2 /* WBUser.m */,
 				52A6E26D2084740800F43217 /* WBModel.h */,
 				52A6E26E2084740800F43217 /* WBModel.m */,
 			);
@@ -660,8 +699,8 @@
 		529EAD4820A43C0000E790BD /* WBShare */ = {
 			isa = PBXGroup;
 			children = (
-				529EAD4920A43C1800E790BD /* WBShare.h */,
-				529EAD4A20A43C1800E790BD /* WBShare.m */,
+				5285746620A52EFF00915DA2 /* WBShare.h */,
+				5285746720A52EFF00915DA2 /* WBShare.m */,
 			);
 			path = WBShare;
 			sourceTree = "<group>";
@@ -669,6 +708,7 @@
 		52C4FB35207C57B600A4077B /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5285746220A52E8F00915DA2 /* Liweibin.entitlements */,
 				52E011B3207C54B8007450EA /* Info.plist */,
 				52C4FB32207C572800A4077B /* Assets.xcassets */,
 				52E011B4207C54B8007450EA /* main.m */,
@@ -1069,6 +1109,14 @@
 					52E011A1207C54B8007450EA = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1148,10 +1196,10 @@
 				52C4FD73207CA66B00A4077B /* FLAnimatedImageView+WebCache.m in Sources */,
 				52C4FCCA207CA5AF00A4077B /* MJRefreshComponent.m in Sources */,
 				52C4FD87207CA66B00A4077B /* SDWebImageWebPCoder.m in Sources */,
+				5285746820A52EFF00915DA2 /* WBShare.m in Sources */,
 				5235DAE8207F22C70000503C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				52C4FD81207CA66B00A4077B /* SDWebImageFrame.m in Sources */,
 				52C4FD9B207CA6F800A4077B /* WebViewJavascriptBridge_JS.m in Sources */,
-				529EAD4B20A43C1800E790BD /* WBShare.m in Sources */,
 				52C4FD8D207CA66B00A4077B /* UIImageView+HighlightedWebCache.m in Sources */,
 				52C4FD2E207CA63700A4077B /* MJPropertyType.m in Sources */,
 				52C4FD9A207CA6F800A4077B /* WebViewJavascriptBridge.m in Sources */,
@@ -1223,12 +1271,12 @@
 				52C4FD86207CA66B00A4077B /* SDWebImageTransition.m in Sources */,
 				5235DAA2207F017D0000503C /* WBTools.m in Sources */,
 				5235DADF207F22C70000503C /* AFHTTPRequestOperationManager.m in Sources */,
+				5285746520A52EF300915DA2 /* WBUser.m in Sources */,
 				52C4FCD9207CA5AF00A4077B /* UIScrollView+MJExtension.m in Sources */,
 				5235DABB207F017D0000503C /* WBGuideView.m in Sources */,
 				52C4FD2D207CA63700A4077B /* MJPropertyKey.m in Sources */,
 				52C4FD9C207CA6F800A4077B /* WebViewJavascriptBridgeBase.m in Sources */,
 				52C4FCDB207CA5AF00A4077B /* UIView+MJExtension.m in Sources */,
-				529EAD4420A4233A00E790BD /* WBUser.m in Sources */,
 				52C4FCD0207CA5AF00A4077B /* MJRefreshBackGifFooter.m in Sources */,
 				52C4FD2F207CA63700A4077B /* NSObject+MJClass.m in Sources */,
 				52C4FD79207CA66B00A4077B /* SDImageCache.m in Sources */,
@@ -1348,6 +1396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Liweibin/Liweibin.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TQ3GK7N8WA;
 				ENABLE_BITCODE = NO;
@@ -1365,6 +1414,7 @@
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/QQ",
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/WeChat",
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/WeChat/WechatSDK",
+					"$(PROJECT_DIR)/Liweibin/ThirdLib/JPush",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1381,6 +1431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Liweibin/Liweibin.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TQ3GK7N8WA;
@@ -1399,6 +1450,7 @@
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/QQ",
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/WeChat",
 					"$(PROJECT_DIR)/Liweibin/ThirdLib/UMShare/WeChat/WechatSDK",
+					"$(PROJECT_DIR)/Liweibin/ThirdLib/JPush",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

@@ -11,8 +11,12 @@
 #import "PersonViewController.h"
 #import "WBTabbarViewController.h"
 
+#import "JPUSHService.h"
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
-@interface AppDelegate ()
+@interface AppDelegate () <JPUSHRegisterDelegate>
 
 @end
 
@@ -52,7 +56,8 @@
 
 
     [self initUMengShare];
-    
+    [self initJPushWith:launchOptions];
+
     return YES;
 }
 
@@ -103,6 +108,53 @@
         // 其他如支付等SDK的回调
     }
     return result;
+}
+
+#pragma mark - 极光
+- (void)initJPushWith:(NSDictionary *)launchOptions {
+
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert | JPAuthorizationOptionBadge | JPAuthorizationOptionSound;
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+
+    [JPUSHService setupWithOption:launchOptions
+                           appKey:self.common.JPushAppKey
+                          channel:@"App Store"
+                 apsForProduction:YES
+            advertisingIdentifier:nil];
+
+    [JPUSHService setAlias:[NSString stringWithFormat:@"beisu_%@", @"self.user.uid"]
+                completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                    NSLog(@"iResCode = %ld, \n seq = %ld, \n iAlias =　%@", iResCode, seq, iAlias);
+                } seq:111];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+    [self receiveJPushNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+    [JPUSHService handleRemoteNotification:userInfo];
+    [self receiveJPushNotification:userInfo];
+}
+
+// 收到推送, 显示角标, 跳转控制器
+- (void)receiveJPushNotification:(NSDictionary *)userInfo {
+
+    if (WBInteger(userInfo[@"kind"]) == 2) {
+        //网页推送时直接进入webview
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"receiveJPushWeb" object:self userInfo:userInfo];
+    } else {
+        //系统消息推送时显示角标
+    }
 }
 
 #pragma mark - appdelegate

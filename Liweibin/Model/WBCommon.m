@@ -11,15 +11,7 @@
 @implementation WBCommon
 
 - (void)initCommonParam {
-    self.shareUrl = @"http://www.beisu100.com/app/qr/ad/ad001.html";
-    self.UMengAppKey = @"568093ede0f55af33e0022cf";
-    self.wechatAppKey = @"wx782f1e709ffdaf1e";
-    self.wechatAppSecret = @"0cf8a47d8a1740c833b61ca57ed4066c";
-    self.qqAppKey = @"1105050670";
-    self.qqAppSecret = @"w7hO5DpbJFzzzH6t";
-    self.defaultThemeColor = [WBTools colorWithHexValue:0xFFA340];
-    self.defaultBcakgroundColor = [WBTools colorWithHexValue:0xEFF0F1];
-    
+
     self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
     self.screenHeight = [[UIScreen mainScreen] bounds].size.height ;
     self.is35Inch = [UIScreen mainScreen].bounds.size.height == 480.f;
@@ -30,6 +22,20 @@
     
     self.navHeight = self.is58Inch ? 88 : 64;
     self.tabbarHeight = self.is58Inch ? 83 : 49;
+
+    self.defaultThemeColor = [WBTools colorWithHexValue:0xFFA340];
+    self.defaultBcakgroundColor = [WBTools colorWithHexValue:0xEFF0F1];
+    
+    self.shareUrl = @"http://www.beisu100.com/app/qr/ad/ad001.html";
+    self.UMengAppKey = @"568093ede0f55af33e0022cf";
+    self.wechatAppKey = @"wx782f1e709ffdaf1e";
+    self.wechatAppSecret = @"0cf8a47d8a1740c833b61ca57ed4066c";
+    self.qqAppKey = @"1105050670";
+    self.qqAppSecret = @"w7hO5DpbJFzzzH6t";
+    
+    self.JPushAppKey = @"2fb83c64b4e82384a0e9fbf0";
+
 }
+
 
 @end
