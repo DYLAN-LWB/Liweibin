@@ -17,43 +17,14 @@
 
 @implementation WBBaseViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    // 隐藏系统nav
-    self.navigationController.navigationBarHidden = YES;
-    
-    
-    if ([self.VCClass isEqualToString:@"HomeViewController"]
-        || [self.VCClass isEqualToString:@"CourseViewController"]
-        || [self.VCClass isEqualToString:@"DiscoverViewController"]
-        || [self.VCClass isEqualToString:@"PersonViewController"]) {
-        
-//        [[AppDelegate networkManger].tabBarController setTabBarHidden:NO];
-    }
-    
- 
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if ([self.VCClass isEqualToString:@"HomeViewController"]
-        || [self.VCClass isEqualToString:@"CourseViewController"]
-        || [self.VCClass isEqualToString:@"DiscoverViewController"]
-        || [self.VCClass isEqualToString:@"PersonViewController"]) {
-        
-//        [[AppDelegate networkManger].tabBarController setTabBarHidden:YES];
-    }
-    
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
 
     self.VCClass = [NSString stringWithFormat:@"%@", self.class];
     self.view.backgroundColor = AppManger.common.defaultBcakgroundColor;
-    
+    self.navigationController.navigationBarHidden = YES;
+
     //添加自定义nav视图
     self.navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.navHeight)];
     self.navigationView.backgroundColor = AppManger.common.defaultThemeColor;

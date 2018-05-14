@@ -7,6 +7,7 @@
 //
 
 #import "WBTabbarViewController.h"
+#import "WBNavViewController.h"
 #import "LoginAccountViewController.h"
 
 //数字角标直径
@@ -47,7 +48,7 @@
 
 - (void)showLoginController {
     LoginAccountViewController *login = [[LoginAccountViewController alloc] init];
-    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+    WBNavViewController *loginNav = [[WBNavViewController alloc] initWithRootViewController:login];
     [self presentViewController:loginNav animated:YES completion:nil];
 }
 
@@ -57,7 +58,7 @@
     for (NSString *className in controllers) {
         Class class = NSClassFromString(className);
         UIViewController *viewcontroller = [[class alloc]init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewcontroller];
+        WBNavViewController *nav = [[WBNavViewController alloc] initWithRootViewController:viewcontroller];
         [items addObject:nav];
     }
     self.viewControllers = items;

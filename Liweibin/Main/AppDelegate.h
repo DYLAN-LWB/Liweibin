@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBTabbarViewController.h"
 #import "WBCommonModel.h"
 #import "WBModel.h"
 #import "WBUserModel.h"
@@ -20,6 +21,7 @@
 
 + (AppDelegate *)sharedManger;
 
+@property (nonatomic, strong) WBTabbarViewController *tabbar;
 //用户信息表
 @property (nonatomic, strong) WBUserModel *user;
 //公共信息表

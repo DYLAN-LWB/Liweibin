@@ -39,7 +39,7 @@
     [login addTarget:self action:@selector(loginBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:login];
     
-    [self loginBtn];
+//    [self loginBtn];
 }
 
 - (void)loginBtn {

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "HomeViewController.h"
 #import "PersonViewController.h"
-#import "WBTabbarViewController.h"
+
 
 #import "JPUSHService.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -38,15 +38,15 @@
     self.network = [[WBNetworkModel alloc] init];
     [self.network initNetworkInterface];
     
-    WBTabbarViewController *tabbar = [[WBTabbarViewController alloc] init];
-    self.window.rootViewController = tabbar;
+    self.tabbar = [[WBTabbarViewController alloc] init];
+    self.window.rootViewController = self.tabbar;
     
     //设置数字角标
-    [tabbar showBadgeMark:8 index:0];
+    [self.tabbar showBadgeMark:8 index:0];
     //设置小红点
-    [tabbar showPointMarkIndex:1];
+    [self.tabbar showPointMarkIndex:1];
     //不显示角标
-    [tabbar hideMarkIndex:3];
+    [self.tabbar hideMarkIndex:3];
 
     
     //读取用户信息
