@@ -84,7 +84,6 @@
 		528578A220A584F700915DA2 /* WBNetworkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578A120A584F700915DA2 /* WBNetworkModel.m */; };
 		528578A420A58ADC00915DA2 /* icon_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528578A320A58ADC00915DA2 /* icon_back@3x.png */; };
 		528578A620A58BF300915DA2 /* login_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528578A520A58BF300915DA2 /* login_back@3x.png */; };
-		528578A920A58E7600915DA2 /* LoginAuthCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578A820A58E7600915DA2 /* LoginAuthCodeViewController.m */; };
 		528578AB20A5930F00915DA2 /* secure_yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528578AA20A5930F00915DA2 /* secure_yes@3x.png */; };
 		528578AD20A5932A00915DA2 /* secure_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528578AC20A5932900915DA2 /* secure_no@3x.png */; };
 		528578B120A5A2BB00915DA2 /* WBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578B020A5A2BB00915DA2 /* WBButton.m */; };
@@ -95,8 +94,11 @@
 		528578C320A5A77C00915DA2 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578BE20A5A77C00915DA2 /* NSString+MD5.m */; };
 		528578C420A5A77C00915DA2 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578C020A5A77C00915DA2 /* SecurityUtil.m */; };
 		528578C820A5A87C00915DA2 /* WBPayManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578C720A5A87C00915DA2 /* WBPayManger.m */; };
+		528578CF20A5B63700915DA2 /* WBAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578CE20A5B63700915DA2 /* WBAuthView.m */; };
+		528578D220A5B64300915DA2 /* LoginAuthCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528578D020A5B64300915DA2 /* LoginAuthCodeViewController.m */; };
 		529EAD3420A3FA1400E790BD /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529EAD3320A3FA1400E790BD /* UMCommon.framework */; };
 		529EAD4120A4218100E790BD /* WBCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 529EAD3A20A416AE00E790BD /* WBCommonModel.m */; };
+		52A61A5F20A91FC600A6335B /* LoginResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A61A5E20A91FC600A6335B /* LoginResetPasswordViewController.m */; };
 		52A6E26F2084740800F43217 /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A6E26E2084740800F43217 /* WBModel.m */; };
 		52C4FB33207C572800A4077B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C4FB32207C572800A4077B /* Assets.xcassets */; };
 		52C4FB47207C5FFD00A4077B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C4FB46207C5FFD00A4077B /* HomeViewController.m */; };
@@ -293,8 +295,6 @@
 		528578A120A584F700915DA2 /* WBNetworkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNetworkModel.m; sourceTree = "<group>"; };
 		528578A320A58ADC00915DA2 /* icon_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@3x.png"; sourceTree = "<group>"; };
 		528578A520A58BF300915DA2 /* login_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back@3x.png"; sourceTree = "<group>"; };
-		528578A720A58E7600915DA2 /* LoginAuthCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginAuthCodeViewController.h; path = ../../../../LoginAuthCodeViewController.h; sourceTree = "<group>"; };
-		528578A820A58E7600915DA2 /* LoginAuthCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginAuthCodeViewController.m; path = ../../../../LoginAuthCodeViewController.m; sourceTree = "<group>"; };
 		528578AA20A5930F00915DA2 /* secure_yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secure_yes@3x.png"; sourceTree = "<group>"; };
 		528578AC20A5932900915DA2 /* secure_no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secure_no@3x.png"; sourceTree = "<group>"; };
 		528578AF20A5A2BB00915DA2 /* WBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBButton.h; sourceTree = "<group>"; };
@@ -312,9 +312,15 @@
 		528578C020A5A77C00915DA2 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
 		528578C620A5A87C00915DA2 /* WBPayManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPayManger.h; sourceTree = "<group>"; };
 		528578C720A5A87C00915DA2 /* WBPayManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPayManger.m; sourceTree = "<group>"; };
+		528578CD20A5B63700915DA2 /* WBAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAuthView.h; sourceTree = "<group>"; };
+		528578CE20A5B63700915DA2 /* WBAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAuthView.m; sourceTree = "<group>"; };
+		528578D020A5B64300915DA2 /* LoginAuthCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAuthCodeViewController.m; sourceTree = "<group>"; };
+		528578D120A5B64300915DA2 /* LoginAuthCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAuthCodeViewController.h; sourceTree = "<group>"; };
 		529EAD3320A3FA1400E790BD /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
 		529EAD3920A416AE00E790BD /* WBCommonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBCommonModel.h; sourceTree = "<group>"; };
 		529EAD3A20A416AE00E790BD /* WBCommonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBCommonModel.m; sourceTree = "<group>"; };
+		52A61A5D20A91FC600A6335B /* LoginResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginResetPasswordViewController.h; sourceTree = "<group>"; };
+		52A61A5E20A91FC600A6335B /* LoginResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginResetPasswordViewController.m; sourceTree = "<group>"; };
 		52A6E26D2084740800F43217 /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		52A6E26E2084740800F43217 /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		52C4FB32207C572800A4077B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -555,6 +561,7 @@
 		5235DA71207F017D0000503C /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				528578C920A5B5DB00915DA2 /* WBAuthView */,
 				528578AE20A5A2BB00915DA2 /* WBButton */,
 				5235DA74207F017D0000503C /* WBAlertView */,
 				5235DA8E207F017D0000503C /* WBCircleView */,
@@ -817,6 +824,15 @@
 			path = WBPayManger;
 			sourceTree = "<group>";
 		};
+		528578C920A5B5DB00915DA2 /* WBAuthView */ = {
+			isa = PBXGroup;
+			children = (
+				528578CD20A5B63700915DA2 /* WBAuthView.h */,
+				528578CE20A5B63700915DA2 /* WBAuthView.m */,
+			);
+			path = WBAuthView;
+			sourceTree = "<group>";
+		};
 		529EAD3820A416A700E790BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,8 +939,10 @@
 				52C4FB5C207C641500A4077B /* LoginAccountViewController.m */,
 				5285789B20A5841800915DA2 /* LoginPasswordViewController.h */,
 				5285789A20A5841800915DA2 /* LoginPasswordViewController.m */,
-				528578A720A58E7600915DA2 /* LoginAuthCodeViewController.h */,
-				528578A820A58E7600915DA2 /* LoginAuthCodeViewController.m */,
+				528578D120A5B64300915DA2 /* LoginAuthCodeViewController.h */,
+				528578D020A5B64300915DA2 /* LoginAuthCodeViewController.m */,
+				52A61A5D20A91FC600A6335B /* LoginResetPasswordViewController.h */,
+				52A61A5E20A91FC600A6335B /* LoginResetPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1340,7 +1358,6 @@
 				5235DAE3207F22C70000503C /* AFURLConnectionOperation.m in Sources */,
 				52C4FD7A207CA66B00A4077B /* SDImageCacheConfig.m in Sources */,
 				52C4FD78207CA66B00A4077B /* SDAnimatedImageRep.m in Sources */,
-				528578A920A58E7600915DA2 /* LoginAuthCodeViewController.m in Sources */,
 				52C4FD7E207CA66B00A4077B /* SDWebImageCompat.m in Sources */,
 				52C4FCCD207CA5AF00A4077B /* MJRefreshAutoGifFooter.m in Sources */,
 				52C4FD2A207CA63700A4077B /* MJExtensionConst.m in Sources */,
@@ -1354,6 +1371,7 @@
 				52C4FD81207CA66B00A4077B /* SDWebImageFrame.m in Sources */,
 				52C4FD9B207CA6F800A4077B /* WebViewJavascriptBridge_JS.m in Sources */,
 				52C4FD8D207CA66B00A4077B /* UIImageView+HighlightedWebCache.m in Sources */,
+				528578D220A5B64300915DA2 /* LoginAuthCodeViewController.m in Sources */,
 				52C4FD2E207CA63700A4077B /* MJPropertyType.m in Sources */,
 				52C4FD9A207CA6F800A4077B /* WebViewJavascriptBridge.m in Sources */,
 				52C4FD30207CA63700A4077B /* NSObject+MJCoding.m in Sources */,
@@ -1380,11 +1398,13 @@
 				5285767A20A53CF300915DA2 /* DiscoverViewController.m in Sources */,
 				5235DABC207F017D0000503C /* WBPageControl.m in Sources */,
 				52C4FD33207CA63700A4077B /* NSString+MJExtension.m in Sources */,
+				52A61A5F20A91FC600A6335B /* LoginResetPasswordViewController.m in Sources */,
 				5235DABE207F017D0000503C /* WBTabbarButton.m in Sources */,
 				52C4FD2B207CA63700A4077B /* MJFoundation.m in Sources */,
 				5235DAC9207F0DBE0000503C /* WBNetwork.m in Sources */,
 				52C4FD8A207CA66B00A4077B /* UIImage+GIF.m in Sources */,
 				528578C820A5A87C00915DA2 /* WBPayManger.m in Sources */,
+				528578CF20A5B63700915DA2 /* WBAuthView.m in Sources */,
 				5235DABD207F017D0000503C /* LaunchAdvert.m in Sources */,
 				52C4FB58207C63A800A4077B /* WBBaseViewController.m in Sources */,
 				52C4FCD2207CA5AF00A4077B /* MJRefreshBackStateFooter.m in Sources */,

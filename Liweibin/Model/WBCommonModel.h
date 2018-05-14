@@ -45,4 +45,7 @@
 @property (nonatomic , copy) NSString   *noticePaySuccess;
 @property (nonatomic , copy) NSString   *noticeLoginSuccess;
 
+@property (nonatomic, copy) NSString *deviceToken;
+
+
 @end

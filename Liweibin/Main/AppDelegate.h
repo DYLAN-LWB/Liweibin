@@ -30,7 +30,8 @@
 //关闭启动页广告背景
 - (void)dismissCustomLaunchImage;
 
-
+- (void)saveUserInfo:(NSDictionary *)info;
+- (void)loginOut;
 
 @end
 

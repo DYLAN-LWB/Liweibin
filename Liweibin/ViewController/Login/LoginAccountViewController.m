@@ -14,6 +14,7 @@
     UILabel *_remindLabel;
     UITextField *_phoneNumTF;
     UIButton *_nextBtn;
+    UIButton *_agreeBtn;
 }
 @end
 
@@ -51,7 +52,7 @@
     _phoneNumTF = [[UITextField alloc] init];
     _phoneNumTF.frame = CGRectMake(WBFit(60), WBFit(120), AppManger.common.screenWidth - WBFit(120), WBFit(45));
     _phoneNumTF.delegate = self;
-    _phoneNumTF.font = WBFont(21);
+    _phoneNumTF.font = WBFont(20);
     _phoneNumTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     _phoneNumTF.contentMode = UIViewContentModeScaleAspectFill;
     _phoneNumTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 22)];
@@ -64,28 +65,13 @@
     _phoneNumTF.layer.borderWidth = WBFit(2);
     [self.view addSubview:_phoneNumTF];
     [_phoneNumTF becomeFirstResponder];
-    
+
     _nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _nextBtn.frame = CGRectMake((AppManger.common.screenWidth - WBFit(100))*0.5, WBFit(200), WBFit(100), WBFit(100));
     [_nextBtn setImage:[UIImage imageNamed:@"next_over_btn"] forState:UIControlStateNormal];
     [_nextBtn setImage:[UIImage imageNamed:@"next_btn"] forState:UIControlStateHighlighted];
     [_nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nextBtn];
-    
-    //我同意倍速课堂的用户协议
-//    WBButton *protocolBtn = [[WBButton alloc] init];
-//    protocolBtn.frame = CGRectMake(WBFit(80), WBFit(350), AppManger.common.screenWidth - WBFit(160), WBFit(40));
-//    protocolBtn.buttonStyle = WBButtonStyleImageLeftTextRight;
-//    protocolBtn.titleLabel.font = WBFont(16);
-//    [protocolBtn setImage:[UIImage imageNamed:@"tongyi_btn"] forState:UIControlStateNormal];
-//    [protocolBtn setImage:[UIImage imageNamed:@"tongyi_over_btn"] forState:UIControlStateSelected];
-//    [protocolBtn setTitle:@"我同意倍速课堂的用户协议" forState:UIControlStateNormal];
-//    [protocolBtn setTitleColor:[WBTools colorWithHexValue:0x804120] forState:UIControlStateNormal];
-//    [protocolBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, WBFit(10), 0, 0)];
-//    [protocolBtn addTarget:self action:@selector(protocolBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:protocolBtn];
-//    protocolBtn.selected = YES;
-
     
     UIButton *protocolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     protocolBtn.frame = CGRectMake(WBFit(100), WBFit(350), AppManger.common.screenWidth - WBFit(200), WBFit(40));
@@ -95,12 +81,14 @@
     [protocolBtn addTarget:self action:@selector(protocolBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:protocolBtn];
     
-    UIButton *agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    agreeBtn.frame = CGRectMake(WBFit(60), WBFit(350), WBFit(40), WBFit(40));
-    [agreeBtn setImage:[UIImage imageNamed:@"tongyi_btn"] forState:UIControlStateNormal];
-    [agreeBtn setImage:[UIImage imageNamed:@"tongyi_over_btn"] forState:UIControlStateSelected];
-    [agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:agreeBtn];
+    _agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _agreeBtn.frame = CGRectMake(WBFit(60), WBFit(350), WBFit(40), WBFit(40));
+    [_agreeBtn setImage:[UIImage imageNamed:@"tongyi_btn"] forState:UIControlStateNormal];
+    [_agreeBtn setImage:[UIImage imageNamed:@"tongyi_over_btn"] forState:UIControlStateSelected];
+    [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_agreeBtn];
+    
+    _agreeBtn.selected = YES;
     
     _phoneNumTF.text = @"18810536903";
 }
@@ -108,29 +96,33 @@
 - (void)agreeBtnClick:(UIButton *)button {
     button.selected = !button.selected;
 }
+
 //协议
 - (void)protocolBtnClick {
     WebViewController *web = [[WebViewController alloc] init];
     web.detailUrl = @"http://www.beisu100.com/beisuapp/article/reginfo/aid/13";
     [self.navigationController pushViewController:web animated:YES];
-
 }
 
 //下一步
 - (void)nextBtnClick {
-    
-    _nextBtn.enabled = NO;
-    
+
     // 判断手机号格式是否正确
     NSString *mobileRegex = @"^[1][34578][0-9]{9}$";
     NSPredicate *mobileTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",mobileRegex];
     
     if (![mobileTest evaluateWithObject:_phoneNumTF.text]) {
         [self shake:_phoneNumTF];
-        _remindLabel.text = @"手机号错误,请重新输入";
-        _remindLabel.textColor = [WBTools colorWithHexValue:0x800000];
+        [WBAlertView showMessageToast:@"手机号错误,请重新输入" toView:self.view];
         return;
     }
+    
+    if (!_agreeBtn.selected) {
+        [WBAlertView showMessageToast:@"请先阅读相关协议并同意" toView:self.view];
+        return;
+    }
+    
+    _nextBtn.enabled = NO;
     
     [[WBNetwork networkManger] requestGet:[NSString stringWithFormat:@"%@/mobile/%@",AppManger.network.userIsRegist, _phoneNumTF.text]
                                   success:^(id response) {
@@ -140,7 +132,7 @@
                                       if (model.code == 0 || model.code == 3) {
                                           LoginPasswordViewController *pwd = [[LoginPasswordViewController alloc] init];
                                           pwd.isRegist = model.code == 3 ? YES : NO;
-                                          pwd.account = @"18810536903";
+                                          pwd.account = _phoneNumTF.text;
                                           [self.navigationController pushViewController:pwd animated:YES];
                                       } else {
                                           [self shake:_phoneNumTF];

@@ -71,7 +71,23 @@
     
 }
 
+- (void)saveUserInfo:(NSDictionary *)info {
+    
+    self.user = [WBUserModel modelWithKeyValues:info];
 
+    NSData *data = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"user"];
+    
+    [JPUSHService setAlias:[NSString stringWithFormat:@"beisu_%@", self.user.uid]
+                completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                    NSLog(@"iResCode = %ld, \n seq = %ld, \n iAlias =　%@", iResCode, seq, iAlias);
+                } seq:111];
+}
+
+- (void)loginOut {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user removeObjectForKey:@"user"];
+}
 
 #pragma mark - 友盟
 - (void)initUMengShare {
@@ -125,15 +141,14 @@
                           channel:@"App Store"
                  apsForProduction:YES
             advertisingIdentifier:nil];
-
-    [JPUSHService setAlias:[NSString stringWithFormat:@"beisu_%@", @"self.user.uid"]
-                completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-                    NSLog(@"iResCode = %ld, \n seq = %ld, \n iAlias =　%@", iResCode, seq, iAlias);
-                } seq:111];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    // 用户注册时发给服务器
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    self.common.deviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
