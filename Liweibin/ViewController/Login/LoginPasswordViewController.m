@@ -88,8 +88,6 @@
     [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [forgetBtn addTarget:self action:@selector(forgetBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgetBtn];
-    
-    _pwdNumTF.text = @"123";
 }
 
 - (void)secureBtnChange:(UIButton *)button {

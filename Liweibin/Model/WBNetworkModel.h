@@ -20,5 +20,4 @@
 @property (nonatomic , copy) NSString   *userRegist;
 @property (nonatomic , copy) NSString   *userResetPwd;
 
-
 @end

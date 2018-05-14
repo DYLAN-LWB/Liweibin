@@ -227,4 +227,5 @@
     [view.layer addAnimation:shakeAnimation forKey:nil];
     CFRelease(shakePath);
 }
+
 @end

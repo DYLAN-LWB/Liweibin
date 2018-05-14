@@ -89,8 +89,6 @@
     [self.view addSubview:_agreeBtn];
     
     _agreeBtn.selected = YES;
-    
-    _phoneNumTF.text = @"18810536903";
 }
 
 - (void)agreeBtnClick:(UIButton *)button {
