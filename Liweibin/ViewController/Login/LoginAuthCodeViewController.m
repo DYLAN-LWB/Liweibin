@@ -29,7 +29,7 @@
     self.navigationView.hidden = YES;
     
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.screenWidth*1.2);
+    imageView.frame = CGRectMake(0, 0, WB_Common.screenWidth, WB_Common.screenWidth*1.2);
     imageView.image = [UIImage imageNamed:@"login_bg"];
     imageView.userInteractionEnabled = YES;
     [self.view addSubview:imageView];
@@ -41,7 +41,7 @@
     [self.view addSubview:backBtn];
     
     _remindLabel = [[UILabel alloc] init];
-    _remindLabel.frame = CGRectMake(0, WBFit(40), AppManger.common.screenWidth, WBFit(70));
+    _remindLabel.frame = CGRectMake(0, WBFit(40), WB_Common.screenWidth, WBFit(70));
     _remindLabel.numberOfLines = 0;
     _remindLabel.textColor = [WBTools colorWithHexValue:0x800000];
     _remindLabel.font = WBFont(18);
@@ -59,7 +59,7 @@
     }
     
     _authCodeTF = [[UITextField alloc] init];
-    _authCodeTF.frame = CGRectMake(WBFit(70), WBFit(150), AppManger.common.screenWidth - WBFit(70), WBFit(80));
+    _authCodeTF.frame = CGRectMake(WBFit(70), WBFit(150), WB_Common.screenWidth - WBFit(70), WBFit(80));
     _authCodeTF.delegate = self;
     _authCodeTF.font = WBFont(40);
     _authCodeTF.contentMode = UIViewContentModeScaleAspectFill;
@@ -71,7 +71,7 @@
     [_authCodeTF addTarget:self action:@selector(textFieldEditChanged:) forControlEvents:UIControlEventEditingChanged];
     
     _getAuthCodeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _getAuthCodeButton.frame = CGRectMake(WBFit(80), WBFit(300), AppManger.common.screenWidth - WBFit(160), WBFit(45));
+    _getAuthCodeButton.frame = CGRectMake(WBFit(80), WBFit(300), WB_Common.screenWidth - WBFit(160), WBFit(45));
     _getAuthCodeButton.layer.cornerRadius = WBFit(10);
     [_getAuthCodeButton setTitleColor:[WBTools colorWithHexValue:0x800000]forState:UIControlStateNormal];
     [_getAuthCodeButton addTarget:self action:@selector(getAuthCodeButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -110,7 +110,7 @@
 }
 
 - (void)forgetPassword {
-    [[WBNetwork networkManger] requestGet:[NSString stringWithFormat:@"%@/mobile/%@/type/1/code/%@", AppManger.network.userAuthVerify, self.account, _authCodeTF.text]
+    [[WBNetwork networkManger] requestGet:[NSString stringWithFormat:@"%@/mobile/%@/type/1/code/%@", WB_Network.userAuthVerify, self.account, _authCodeTF.text]
                                   success:^(id response) {
                                       WBModel *model = [WBModel modelWithKeyValues:response];
                                       if (model.code == 0) {
@@ -126,7 +126,7 @@
                                           [_authCodeTF becomeFirstResponder];
                                       }
                                   } failure:^(NSError *error) {
-                                      [WBAlertView showMessageToast:AppManger.network.errorMsg toView:self.view];
+                                      [WBAlertView showMessageToast:WB_Network.errorMsg toView:self.view];
                                       _authCodeTF.userInteractionEnabled = YES;
                                       _authCodeTF.text = @"";
                                       [_authCodeTF becomeFirstResponder];
@@ -141,15 +141,15 @@
     param[@"grade_id"]   = @"0";
     param[@"regsource"]  = @"2";
     param[@"regchannel"] = @"0";
-    param[@"token_id"]   = AppManger.common.deviceToken;
+    param[@"token_id"]   = WB_Common.deviceToken;
     param[@"invite_code"]   = @"";
     
-    [[WBNetwork networkManger] requestPost:AppManger.network.userRegist
+    [[WBNetwork networkManger] requestPost:WB_Network.userRegist
                                     params:param
                                    success:^(id response) {
                                        WBModel *model = [WBModel modelWithKeyValues:response];
                                        if (model.code == 0) {
-                                           [AppManger saveUserInfo:model.data];
+                                           [WB_Manger saveUserInfo:model.data];
                                            [self dismissViewControllerAnimated:YES completion:nil];
                                        } else {
                                            [self shake:_authCodeTF];
@@ -159,7 +159,7 @@
                                            [_authCodeTF becomeFirstResponder];
                                        }
                                    } failure:^(NSError *error) {
-                                       [WBAlertView showMessageToast:AppManger.network.errorMsg toView:self.view];
+                                       [WBAlertView showMessageToast:WB_Network.errorMsg toView:self.view];
                                        _authCodeTF.userInteractionEnabled = YES;
                                        _authCodeTF.text = @"";
                                        [_authCodeTF becomeFirstResponder];
@@ -178,7 +178,7 @@
     param[@"mobile"] = self.account;
     param[@"type"] = self.sendCodeType == SendCodeTypeRegister ? @"0" : @"1";
 
-    [[WBNetwork networkManger] requestPost:AppManger.network.userSendAuthCode
+    [[WBNetwork networkManger] requestPost:WB_Network.userSendAuthCode
                                     params:param
                                    success:^(id response) {
                                        WBModel *model = [WBModel modelWithKeyValues:response];

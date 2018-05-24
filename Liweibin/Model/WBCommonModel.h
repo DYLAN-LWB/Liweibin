@@ -12,6 +12,10 @@
 
 - (void)initCommonParam;
 
+@property (nonatomic, copy) NSString *deviceToken;
+@property (nonatomic, copy) NSString *curVersion;
+
+
 //屏幕尺寸相关
 @property (nonatomic , assign) CGFloat   screenWidth;
 @property (nonatomic , assign) CGFloat   screenHeight;
@@ -45,7 +49,6 @@
 @property (nonatomic , copy) NSString   *noticePaySuccess;
 @property (nonatomic , copy) NSString   *noticeLoginSuccess;
 
-@property (nonatomic, copy) NSString *deviceToken;
 
 
 @end

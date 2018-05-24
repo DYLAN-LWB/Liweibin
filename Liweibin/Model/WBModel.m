@@ -10,11 +10,14 @@
 #import "MJExtension.h"
 
 @implementation WBModel
-
 + (instancetype)modelWithKeyValues:(id)keyValues {
     return [self mj_objectWithKeyValues:keyValues context:nil];
 }
+@end
 
-
+@implementation WBDictModel
++ (instancetype)modelWithKeyValues:(id)keyValues {
+    return [self mj_objectWithKeyValues:keyValues context:nil];
+}
 @end
 

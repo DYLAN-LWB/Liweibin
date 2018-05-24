@@ -22,7 +22,7 @@
     
     
     // 放大图片
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(AppManger.common.screenWidth/2, AppManger.common.screenWidth/2, 0, 0)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(WB_Common.screenWidth/2, WB_Common.screenWidth/2, 0, 0)];
     if (showImageView) {
         imageView.image = showImageView.image;
     } else {
@@ -36,7 +36,7 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         backgroundView.alpha = 1;
-        imageView.frame = CGRectMake(0,  0, AppManger.common.screenWidth, AppManger.common.screenHeight);
+        imageView.frame = CGRectMake(0,  0, WB_Common.screenWidth, WB_Common.screenHeight);
     }];
 }
 
@@ -45,7 +45,7 @@
     UIView *backgroundView = tap.view;
     UIImageView *imageView = (UIImageView*)[tap.view viewWithTag:1];
     [UIView animateWithDuration:0.3 animations:^{
-        imageView.frame = CGRectMake(AppManger.common.screenWidth/2, AppManger.common.screenHeight/2, 0, 0);
+        imageView.frame = CGRectMake(WB_Common.screenWidth/2, WB_Common.screenHeight/2, 0, 0);
         backgroundView.alpha = 0;
     } completion:^(BOOL finished) {
         [backgroundView removeFromSuperview];

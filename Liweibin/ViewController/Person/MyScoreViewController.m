@@ -1,18 +1,18 @@
 //
-//  P_MyScoreViewController.m
+//  MyScoreViewController.m
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "P_MyScoreViewController.h"
+#import "MyScoreViewController.h"
 
-@interface P_MyScoreViewController ()
+@interface MyScoreViewController ()
 
 @end
 
-@implementation P_MyScoreViewController
+@implementation MyScoreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

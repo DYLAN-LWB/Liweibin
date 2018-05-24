@@ -1,5 +1,5 @@
 //
-//  WebViewController.h
+//  WBWebViewController.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/4/10.
@@ -8,7 +8,7 @@
 
 #import "WBBaseViewController.h"
 
-@interface WebViewController : WBBaseViewController
+@interface WBWebViewController : WBBaseViewController
 @property (nonatomic, copy) NSString *detailTitle;
 @property (nonatomic, copy) NSString *shareContent;
 @property (nonatomic, copy) NSString *detailUrl;

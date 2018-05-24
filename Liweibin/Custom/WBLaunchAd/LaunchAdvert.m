@@ -7,7 +7,7 @@
 //
 
 #import "LaunchAdvert.h"
-#import "WebViewController.h"
+#import "WBWebViewController.h"
 #import "CircleView.h"
 
 @interface LaunchAdvert ()
@@ -36,7 +36,7 @@
     if (advertType == 1) {
         [self fullScreenAd];
     } else { 
-        [AppManger dismissCustomLaunchImage];
+        [WB_Manger dismissCustomLaunchImage];
     }
 }
 
@@ -44,7 +44,7 @@
     self.adUrl = WBString(self.adInfoDict[@"url"]);
     self.adTitle  = WBString(self.adInfoDict[@"explain"]);
     
-    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, 1.52 * AppManger.common.screenWidth)];
+    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WB_Common.screenWidth, 1.52 * WB_Common.screenWidth)];
     launchImageView.contentMode = UIViewContentModeScaleAspectFit;
     launchImageView.userInteractionEnabled = YES;
     launchImageView.backgroundColor = [UIColor clearColor];
@@ -52,7 +52,7 @@
     [self addSubview:launchImageView];
 
     
-    CircleView *circleView = [[CircleView alloc] initWithFrame:CGRectMake(AppManger.common.screenWidth - WBFit(65), WBFit(26), WBFit(40), WBFit(40))];
+    CircleView *circleView = [[CircleView alloc] initWithFrame:CGRectMake(WB_Common.screenWidth - WBFit(65), WBFit(26), WBFit(40), WBFit(40))];
     circleView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.66];
     circleView.layer.masksToBounds = YES;
     circleView.layer.cornerRadius = WBFit(20);
@@ -70,7 +70,7 @@
     [launchImageView sd_setImageWithURL:[NSURL URLWithString:WBString(self.adInfoDict[@"img"])]
                               completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                   if(error) {
-                                      [AppManger dismissCustomLaunchImage];
+                                      [WB_Manger dismissCustomLaunchImage];
                                   } else {
                                       
                                       //广告图片加载完成之后在出现跳过按钮
@@ -89,7 +89,7 @@
         [_countDownTimer invalidate];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [AppManger dismissCustomLaunchImage];
+            [WB_Manger dismissCustomLaunchImage];
         });
     }
 }
@@ -98,13 +98,13 @@
 
     if (self.adUrl.length > 6) {
         
-        WebViewController *web = [[WebViewController alloc] init];
+        WBWebViewController *web = [[WBWebViewController alloc] init];
         web.detailUrl = self.adUrl;
         web.detailTitle = self.adTitle ;
         web.view.tag = 678;
-        [AppManger.window.rootViewController presentViewController:web animated:YES completion:nil];
+        [WB_Manger.window.rootViewController presentViewController:web animated:YES completion:nil];
         
-        [AppManger dismissCustomLaunchImage];
+        [WB_Manger dismissCustomLaunchImage];
     }
 }
 

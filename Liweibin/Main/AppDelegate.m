@@ -32,6 +32,14 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    //读取用户信息
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *data = [ud objectForKey:@"user"];
+    if (data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        self.user = [WBUserModel modelWithKeyValues:dict];
+    }
+    
     self.common = [[WBCommonModel alloc] init];
     [self.common initCommonParam];
     
@@ -49,13 +57,7 @@
     [self.tabbar hideMarkIndex:3];
 
     
-    //读取用户信息
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSData *data = [ud objectForKey:@"user"];
-    if (data) {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        self.user = [WBUserModel modelWithKeyValues:dict];
-    }
+
 
 
     [self initUMengShare];
@@ -93,20 +95,20 @@
 - (void)initUMengShare {
     
     //初始化友盟
-    [UMConfigure initWithAppkey:AppManger.common.UMengAppKey channel:@"App Store"];
+    [UMConfigure initWithAppkey:WB_Common.UMengAppKey channel:@"App Store"];
     
     //关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
     
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession
-                                          appKey:AppManger.common.wechatAppKey
-                                       appSecret:AppManger.common.wechatAppSecret
-                                     redirectURL:AppManger.common.shareUrl];
+                                          appKey:WB_Common.wechatAppKey
+                                       appSecret:WB_Common.wechatAppSecret
+                                     redirectURL:WB_Common.shareUrl];
 
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ
-                                          appKey:AppManger.common.qqAppKey
-                                       appSecret:AppManger.common.qqAppSecret
-                                     redirectURL:AppManger.common.shareUrl];
+                                          appKey:WB_Common.qqAppKey
+                                       appSecret:WB_Common.qqAppSecret
+                                     redirectURL:WB_Common.shareUrl];
   
 }
 

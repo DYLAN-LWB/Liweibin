@@ -85,7 +85,7 @@
 
 + (void)showNoDataImageToastToView:(UIView *)view {
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, WBFit(70))];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WB_Common.screenWidth, WBFit(70))];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.numberOfLines = 2;
     titleLabel.tag = 9999;
@@ -93,7 +93,7 @@
     titleLabel.textColor = [UIColor lightGrayColor];
     titleLabel.font = WBFont(20);
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.center = CGPointMake(AppManger.common.screenWidth*0.5, AppManger.common.screenHeight*0.3);
+    titleLabel.center = CGPointMake(WB_Common.screenWidth*0.5, WB_Common.screenHeight*0.3);
     [view addSubview:titleLabel];
     
     //150 200
@@ -110,7 +110,7 @@
     imageView.animationDuration = 0.3;
     imageView.animationRepeatCount = 0;
     imageView.tag = 9999;
-    imageView.center = CGPointMake(AppManger.common.screenWidth*0.5, AppManger.common.screenHeight*0.45);
+    imageView.center = CGPointMake(WB_Common.screenWidth*0.5, WB_Common.screenHeight*0.45);
     [imageView startAnimating];
     [view addSubview:imageView];
 }
@@ -176,40 +176,29 @@
     }
     
     _toastLabel = [[UILabel alloc] init];
-    _toastLabel.frame = CGRectMake(0, 0, 200, WBFit(45));
     _toastLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.66];
     _toastLabel.text = message;
     _toastLabel.textColor = [UIColor whiteColor];
     _toastLabel.textAlignment = NSTextAlignmentCenter;
     _toastLabel.layer.masksToBounds = YES;
-    _toastLabel.layer.cornerRadius = 8;
+    _toastLabel.layer.cornerRadius = WBFit(5);
     _toastLabel.font = WBFont(18);
     _toastLabel.tag = 8346;
+    _toastLabel.numberOfLines = 0;
     [view addSubview:_toastLabel];
     
-    CGSize size = [message boundingRectWithSize:CGSizeMake(AppManger.common.screenWidth - 20, _toastLabel.frame.size.height)
-                                        options: NSStringDrawingTruncatesLastVisibleLine
-                                     attributes:@{ NSFontAttributeName:_toastLabel.font }
-                                        context:nil].size;
+    CGSize size = [WBTools sizeWithText:message width:WB_Common.screenWidth - WBFit(100) height:WBFit(300) font:_toastLabel.font];
     CGRect frame = _toastLabel.frame;
-    frame.size.width = size.width + 40;
+    frame.size.width = size.width + WBFit(50);
+    frame.size.height = size.height + WBFit(20);
     _toastLabel.frame = frame;
     
     CGPoint center = _toastLabel.center;
-    center = CGPointMake(AppManger.common.screenWidth/2, AppManger.common.screenHeight*0.5);
+    center = CGPointMake(WB_Common.screenWidth/2, WB_Common.screenHeight*0.5);
     _toastLabel.center = center;
     
-    _toastLabel.alpha = 0.3;
-    [UIView animateWithDuration:0.5 animations:^{
-        _toastLabel.alpha = 1;
-    }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.3 animations:^{
-            _toastLabel.alpha = 0;
-        } completion:^(BOOL finished) {
-            [_toastLabel removeFromSuperview];
-        }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_toastLabel removeFromSuperview];
     });
 }
 
@@ -237,7 +226,7 @@
         _titleLabel.text = title;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.backgroundColor = AppManger.common.defaultThemeColor;
+        _titleLabel.backgroundColor = WB_Common.defaultThemeColor;
         
         //内容
         _messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -257,12 +246,12 @@
             _cancelButton.layer.cornerRadius = 5;
             _cancelButton.titleLabel.font = WBFont(18);
             [_cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
-            [_cancelButton setTitleColor:AppManger.common.defaultThemeColor forState:UIControlStateNormal];
+            [_cancelButton setTitleColor:WB_Common.defaultThemeColor forState:UIControlStateNormal];
             [_cancelButton setBackgroundColor:[UIColor whiteColor]];
             [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
             _cancelButton.layer.masksToBounds = YES;
             _cancelButton.layer.borderWidth = 1;
-            _cancelButton.layer.borderColor = AppManger.common.defaultThemeColor.CGColor;
+            _cancelButton.layer.borderColor = WB_Common.defaultThemeColor.CGColor;
         }
         
         if (otherButtonTitle) {
@@ -272,7 +261,7 @@
             _confirmButton.titleLabel.font = WBFont(18);
             [_confirmButton setTitle:otherButtonTitle forState:UIControlStateNormal];
             [_confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [_confirmButton setBackgroundColor:AppManger.common.defaultThemeColor];
+            [_confirmButton setBackgroundColor:WB_Common.defaultThemeColor];
             [_confirmButton addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -380,11 +369,11 @@
         _titleLabel.frame = _titleLabel.text ? CGRectMake(0, 0, _alertWidth, titleHeight+WBFit(13)) : CGRectZero;
 
         UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, titleHeight, WBFit(13), WBFit(13))];
-        view1.backgroundColor = AppManger.common.defaultThemeColor;
+        view1.backgroundColor = WB_Common.defaultThemeColor;
         [self addSubview:view1];
         
         UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(_alertWidth - WBFit(13), titleHeight, WBFit(13), WBFit(13))];
-        view2.backgroundColor = AppManger.common.defaultThemeColor;
+        view2.backgroundColor = WB_Common.defaultThemeColor;
         [self addSubview:view2];
         
         //根据内容文字长度来计算视图高度

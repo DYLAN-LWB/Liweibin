@@ -1,18 +1,18 @@
 //
-//  P_ScoreMallViewController.m
+//  ScoreMallViewController.m
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "P_ScoreMallViewController.h"
+#import "ScoreMallViewController.h"
 
-@interface P_ScoreMallViewController ()
+@interface ScoreMallViewController ()
 
 @end
 
-@implementation P_ScoreMallViewController
+@implementation ScoreMallViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

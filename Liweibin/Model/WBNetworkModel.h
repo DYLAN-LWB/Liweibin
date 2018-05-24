@@ -12,6 +12,7 @@
 
 - (void)initNetworkInterface;
 
+//登录模块
 @property (nonatomic , copy) NSString   *errorMsg;
 @property (nonatomic , copy) NSString   *userIsRegist;
 @property (nonatomic , copy) NSString   *userLogin;
@@ -19,5 +20,8 @@
 @property (nonatomic , copy) NSString   *userAuthVerify;
 @property (nonatomic , copy) NSString   *userRegist;
 @property (nonatomic , copy) NSString   *userResetPwd;
+
+@property (nonatomic , copy) NSString   *discoverlist;
+
 
 @end

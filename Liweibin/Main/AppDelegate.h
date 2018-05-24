@@ -13,7 +13,11 @@
 #import "WBUserModel.h"
 #import "WBNetworkModel.h"
 
-#define AppManger [AppDelegate sharedManger]
+#define WB_Manger [AppDelegate sharedManger]
+#define WB_Manger   [AppDelegate sharedManger]
+#define WB_Common   [AppDelegate sharedManger].common
+#define WB_Network  [AppDelegate sharedManger].network
+#define WB_User     [AppDelegate sharedManger].user
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

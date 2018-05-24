@@ -1,15 +1,15 @@
 //
-//  WebViewController.m
+//  WBWebViewController.m
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/4/10.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "WebViewController.h"
+#import "WBWebViewController.h"
 #import "WebViewJavascriptBridge.h"
 #import "SecurityUtil.h"
-@interface WebViewController ()<UIWebViewDelegate>
+@interface WBWebViewController ()<UIWebViewDelegate>
 
 {
     UIView *_navView;
@@ -29,17 +29,17 @@
 
 @end
 
-@implementation WebViewController
+@implementation WBWebViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.view.backgroundColor = AppManger.common.defaultBcakgroundColor;
+    self.view.backgroundColor = WB_Common.defaultBcakgroundColor;
     self.navigationView.hidden = YES;
     
     //默认情况下需添加参数
     if (!self.hasParam) {
-        self.detailUrl = [NSString stringWithFormat:@"%@?className=%@&uid=%@&key=%@&ios_code_version=%@", self.detailUrl, [SecurityUtil encodeBase64String:AppManger.user.gradename], AppManger.user.uid, AppManger.user.key, @""];
+        self.detailUrl = [NSString stringWithFormat:@"%@?className=%@&uid=%@&key=%@&ios_code_version=%@", self.detailUrl, [SecurityUtil encodeBase64String:WB_User.gradename], WB_User.uid, WB_User.key, @""];
     }
     
     //为了及时刷新课程购买状态,url添加时间戳
@@ -50,13 +50,13 @@
     NSLog(@"detailUrl - %@", self.detailUrl);
     
     //nav
-    _navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.navHeight)];
-    _navView.backgroundColor = AppManger.common.defaultThemeColor;
+    _navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WB_Common.screenWidth, WB_Common.navHeight)];
+    _navView.backgroundColor = WB_Common.defaultThemeColor;
     _navView.userInteractionEnabled = YES;
     [self.view addSubview:_navView];
     
     //标题
-    _navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, AppManger.common.navHeight-44, AppManger.common.screenWidth-220, 44)];
+    _navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, WB_Common.navHeight-44, WB_Common.screenWidth-220, 44)];
     _navTitleLabel.textColor = [UIColor whiteColor];
     _navTitleLabel.font = [UIFont systemFontOfSize:18];
     _navTitleLabel.numberOfLines = 0;
@@ -64,7 +64,7 @@
     [_navView addSubview:_navTitleLabel];
     
     //返回按钮
-    _navBackBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, AppManger.common.navHeight-44, 60, 44)];
+    _navBackBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, WB_Common.navHeight-44, 60, 44)];
     _navBackBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [_navBackBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -9, 0, 0)];
     [_navBackBtn setImageEdgeInsets:UIEdgeInsetsMake(-1.5, 5, 2, 0)];
@@ -75,7 +75,7 @@
     [_navView addSubview:_navBackBtn];
     
     //关闭按钮
-    _navPopBtn = [[UIButton alloc] initWithFrame:CGRectMake(60, AppManger.common.navHeight-44, 50, 44)];
+    _navPopBtn = [[UIButton alloc] initWithFrame:CGRectMake(60, WB_Common.navHeight-44, 50, 44)];
     _navPopBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [_navPopBtn setTitle:@"关闭" forState:UIControlStateNormal];
     [_navPopBtn addTarget:self action:@selector(navPopBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -83,7 +83,7 @@
     
     //添加网页
     _webView = [[UIWebView alloc] init];
-    _webView.frame = CGRectMake(0, AppManger.common.navHeight, AppManger.common.screenWidth, AppManger.common.screenHeight - AppManger.common.navHeight);
+    _webView.frame = CGRectMake(0, WB_Common.navHeight, WB_Common.screenWidth, WB_Common.screenHeight - WB_Common.navHeight);
     _webView.delegate = self;
     _webView.scrollView.bounces = NO;
     _webView.scalesPageToFit = YES;
@@ -98,8 +98,8 @@
     [self addJsMethod];
     
     //监听通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySucess) name:AppManger.common.noticePaySuccess object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:AppManger.common.noticeLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySucess) name:WB_Common.noticePaySuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:WB_Common.noticeLoginSuccess object:nil];
 }
 
 #pragma mark - webView delegate
@@ -157,7 +157,7 @@
         
         [WBShare showShareViewWithTitle:data[@"blogURL"][@"desc"]
                                    desc:data[@"blogURL"][@"title"]
-                               imageUrl:AppManger.common.shareImageUrl
+                               imageUrl:WB_Common.shareImageUrl
                                  webUrl:data[@"blogURL"][@"link"]
                          viewController:self];
     }];
@@ -207,7 +207,7 @@
     if (rang.length) {
         self.detailUrl = [self.detailUrl substringToIndex:rang.location];
     }
-    self.detailUrl = [NSString stringWithFormat:@"%@?className=%@&uid=%@&key=%@&ios_code_version=%@", self.detailUrl, [SecurityUtil encodeBase64String:AppManger.user.gradename], AppManger.user.uid, AppManger.user.key, @""];
+    self.detailUrl = [NSString stringWithFormat:@"%@?className=%@&uid=%@&key=%@&ios_code_version=%@", self.detailUrl, [SecurityUtil encodeBase64String:WB_User.gradename], WB_User.uid, WB_User.key, @""];
 
     if ([self.detailUrl rangeOfString:@"ms_course"].length) {
         self.detailUrl = [NSString stringWithFormat:@"%@&time=%.f", self.detailUrl, [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970]];
@@ -219,7 +219,7 @@
     
     [WBShare showShareViewWithTitle:self.detailTitle
                                desc:self.shareContent ? self.shareContent : self.detailTitle
-                           imageUrl:self.detailImageUrl ? self.detailImageUrl: AppManger.common.shareImageUrl
+                           imageUrl:self.detailImageUrl ? self.detailImageUrl: WB_Common.shareImageUrl
                              webUrl:self.detailUrl
                      viewController:self];
 }

@@ -12,6 +12,8 @@
 
 - (void)initCommonParam {
 
+    self.curVersion = @"1";
+    
     self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
     self.screenHeight = [[UIScreen mainScreen] bounds].size.height ;
     self.is35Inch = [UIScreen mainScreen].bounds.size.height == 480.f;

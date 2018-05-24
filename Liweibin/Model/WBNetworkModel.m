@@ -24,6 +24,9 @@ static NSString *domain = @"http://sims.beisu100.com/beisuapp";     //仿真
     self.userRegist = [NSString stringWithFormat:@"%@/user/register", domain];
     self.userResetPwd = [NSString stringWithFormat:@"%@/user/resetpass", domain];
     
+    self.discoverlist = [NSString stringWithFormat:@"%@/article/discoverylist/uid/%@/key/%@", domain, WB_User.uid, WB_User.key];
+    
+
     
 }
 

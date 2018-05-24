@@ -1,18 +1,18 @@
 //
-//  P_MessageViewController.m
+//  EditInfoViewController.m
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "P_MessageViewController.h"
+#import "EditInfoViewController.h"
 
-@interface P_MessageViewController ()
+@interface EditInfoViewController ()
 
 @end
 
-@implementation P_MessageViewController
+@implementation EditInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

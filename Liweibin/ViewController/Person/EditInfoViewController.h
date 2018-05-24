@@ -1,5 +1,5 @@
 //
-//  P_MessageViewController.h
+//  EditInfoViewController.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
@@ -8,6 +8,6 @@
 
 #import "WBBaseViewController.h"
 
-@interface P_MessageViewController : WBBaseViewController
+@interface EditInfoViewController : WBBaseViewController
 
 @end

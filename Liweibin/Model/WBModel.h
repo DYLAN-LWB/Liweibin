@@ -9,15 +9,18 @@
 #import "WBModel.h"
 
 @interface WBModel : NSObject
-
 @property (nonatomic, assign) int code;
 @property (nonatomic, copy) NSString *msg;
-@property (nonatomic, strong) id data;
+@property (nonatomic, strong) NSMutableArray *data;
 
-//通过字典来创建一个模型
 + (instancetype)modelWithKeyValues:(id)keyValues;
-
 @end
 
+@interface WBDictModel : NSObject
+@property (nonatomic, assign) int code;
+@property (nonatomic, copy) NSString *msg;
+@property (nonatomic, strong) NSDictionary *data;
 
++ (instancetype)modelWithKeyValues:(id)keyValues;
+@end
 

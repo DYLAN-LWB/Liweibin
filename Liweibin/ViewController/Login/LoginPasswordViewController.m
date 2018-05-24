@@ -26,7 +26,7 @@
     self.navigationView.hidden = YES;
     
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.screenWidth*1.2);
+    imageView.frame = CGRectMake(0, 0, WB_Common.screenWidth, WB_Common.screenWidth*1.2);
     imageView.image = [UIImage imageNamed:@"login_bg"];
     imageView.userInteractionEnabled = YES;
     [self.view addSubview:imageView];
@@ -38,7 +38,7 @@
     [self.view addSubview:backBtn];
     
     _remindLabel = [[UILabel alloc] init];
-    _remindLabel.frame = CGRectMake(0, WBFit(40), AppManger.common.screenWidth, WBFit(70));
+    _remindLabel.frame = CGRectMake(0, WBFit(40), WB_Common.screenWidth, WBFit(70));
     _remindLabel.numberOfLines = 0;
     _remindLabel.textColor = [WBTools colorWithHexValue:0x800000];
     _remindLabel.font = WBFont(18);
@@ -59,7 +59,7 @@
     [secureBtn addTarget:self action:@selector(secureBtnChange:) forControlEvents:UIControlEventTouchUpInside];
     
     _pwdNumTF = [[UITextField alloc] init];
-    _pwdNumTF.frame = CGRectMake(WBFit(60), WBFit(120), AppManger.common.screenWidth - WBFit(120), WBFit(45));
+    _pwdNumTF.frame = CGRectMake(WBFit(60), WBFit(120), WB_Common.screenWidth - WBFit(120), WBFit(45));
     _pwdNumTF.font = WBFont(21);
     _pwdNumTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     _pwdNumTF.contentMode = UIViewContentModeScaleAspectFill;
@@ -76,14 +76,14 @@
     [_pwdNumTF becomeFirstResponder];
 
     _nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _nextBtn.frame = CGRectMake((AppManger.common.screenWidth - WBFit(100))*0.5, WBFit(200), WBFit(100), WBFit(100));
+    _nextBtn.frame = CGRectMake((WB_Common.screenWidth - WBFit(100))*0.5, WBFit(200), WBFit(100), WBFit(100));
     [_nextBtn setImage:[UIImage imageNamed:@"next_over_btn"] forState:UIControlStateNormal];
     [_nextBtn setImage:[UIImage imageNamed:@"next_btn"] forState:UIControlStateHighlighted];
     [_nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nextBtn];
     
     UIButton *forgetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    forgetBtn.frame = CGRectMake(WBFit(80), WBFit(320), AppManger.common.screenWidth - WBFit(160), WBFit(50));
+    forgetBtn.frame = CGRectMake(WBFit(80), WBFit(320), WB_Common.screenWidth - WBFit(160), WBFit(50));
     [forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
     [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [forgetBtn addTarget:self action:@selector(forgetBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -153,13 +153,13 @@
     param[@"username"] = self.account;
     param[@"password"] = _pwdNumTF.text;
 
-    [[WBNetwork networkManger] requestPost:AppManger.network.userLogin
+    [[WBNetwork networkManger] requestPost:WB_Network.userLogin
                                     params:param
                                    success:^(id response) {
                                        _nextBtn.enabled = YES;
                                        WBModel *model = [WBModel modelWithKeyValues:response];
                                        if (model.code == 0) {
-                                           [AppManger saveUserInfo:model.data];
+                                           [WB_Manger saveUserInfo:model.data];
                                            [self dismissViewControllerAnimated:YES completion:nil];
                                        } else {
                                            [self shake:_pwdNumTF];
@@ -168,7 +168,7 @@
                                    }
                                    failure:^(NSError *error) {
                                        _nextBtn.enabled = YES;
-                                       [WBAlertView showMessageToast:AppManger.network.errorMsg toView:self.view];
+                                       [WBAlertView showMessageToast:WB_Network.errorMsg toView:self.view];
                                    }];
 }
 

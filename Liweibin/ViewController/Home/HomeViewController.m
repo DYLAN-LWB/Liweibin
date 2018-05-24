@@ -21,8 +21,8 @@
     
     
     
-    NSLog(@"uid = %@", AppManger.user.uid);
-    NSLog(@"key = %@", AppManger.user.key);
+    NSLog(@"uid = %@", WB_User.uid);
+    NSLog(@"key = %@", WB_User.key);
     
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
     share.frame = CGRectMake(100, 100, 222, 55);
@@ -43,7 +43,7 @@
 }
 
 - (void)loginBtn {
-    [[NSNotificationCenter defaultCenter] postNotificationName:AppManger.common.noticeShowLogin object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:WB_Common.noticeShowLogin object:self userInfo:nil];
 }
 
 - (void)shareBtn {
@@ -51,7 +51,7 @@
     [WBShare showShareViewWithTitle:@"倍速课堂"
                                desc:@"倍速课堂-万向思维,科学备考"
                            imageUrl:@"http://beisu-js.oss-cn-beijing.aliyuncs.com/lib/img/share_icon.png"
-                             webUrl:AppManger.common.shareUrl
+                             webUrl:WB_Common.shareUrl
                      viewController:self];
 }
 

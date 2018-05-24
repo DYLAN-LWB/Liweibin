@@ -1,18 +1,18 @@
 //
-//  P_SettingViewController.m
+//  TaskViewController.m
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
 //  Copyright © 2018年 李伟宾. All rights reserved.
 //
 
-#import "P_SettingViewController.h"
+#import "TaskViewController.h"
 
-@interface P_SettingViewController ()
+@interface TaskViewController ()
 
 @end
 
-@implementation P_SettingViewController
+@implementation TaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

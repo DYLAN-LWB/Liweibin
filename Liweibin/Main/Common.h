@@ -20,7 +20,7 @@
 #import "WBNetwork.h"
 #import "WBShare.h"
 #import "WBButton.h"
-#import "WebViewController.h"
+#import "WBWebViewController.h"
 
 #import <UMCommon/UMCommon.h>
 #import <UMShare/UMShare.h>

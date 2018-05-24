@@ -1,5 +1,5 @@
 //
-//  P_SettingViewController.h
+//  ScoreMallViewController.h
 //  Liweibin
 //
 //  Created by 李伟宾 on 2018/5/14.
@@ -8,6 +8,6 @@
 
 #import "WBBaseViewController.h"
 
-@interface P_SettingViewController : WBBaseViewController
+@interface ScoreMallViewController : WBBaseViewController
 
 @end

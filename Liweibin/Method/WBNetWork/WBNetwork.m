@@ -59,6 +59,12 @@
     
     url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
+    if ([methodType isEqualToString:@"GET"]) {
+        url = [NSString stringWithFormat:@"%@/version/%@/from-ios", url, WB_Common.curVersion];
+    } else {
+        [params setObject:WB_Common.curVersion forKey:@"version"];
+    }
+    
     NSMutableURLRequest *request = [requestSerializer requestWithMethod:methodType URLString:url parameters:params error:nil];
     request.timeoutInterval = 15;
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -93,9 +99,9 @@
             WBReachability *reach = [WBReachability WBreachabilityForInternetConnection];
             WBNetworkStatus status = [reach WBcurrentReachabilityStatus];
             if (status == 0) {
-                [WBAlertView showMessageToast:@"请检查您的网络" toView:AppManger.window];
+                [WBAlertView showMessageToast:@"请检查您的网络" toView:WB_Manger.window];
             } else {
-                [WBAlertView showMessageToast:@"服务器连接失败,请稍后再试" toView:AppManger.window];
+                [WBAlertView showMessageToast:@"服务器连接失败,请稍后再试" toView:WB_Manger.window];
             }
         }
     }];

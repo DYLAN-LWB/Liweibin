@@ -28,13 +28,13 @@
     
     
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(0, 0, AppManger.common.screenWidth, AppManger.common.screenWidth*1.2);
+    imageView.frame = CGRectMake(0, 0, WB_Common.screenWidth, WB_Common.screenWidth*1.2);
     imageView.image = [UIImage imageNamed:@"login_bg"];
     imageView.userInteractionEnabled = YES;
     [self.view addSubview:imageView];
     
     _remindLabel = [[UILabel alloc] init];
-    _remindLabel.frame = CGRectMake(0, WBFit(50), AppManger.common.screenWidth, WBFit(50));
+    _remindLabel.frame = CGRectMake(0, WBFit(50), WB_Common.screenWidth, WBFit(50));
     _remindLabel.numberOfLines = 0;
     _remindLabel.textColor = [WBTools colorWithHexValue:0x800000];
     _remindLabel.font = WBFont(21);
@@ -43,14 +43,14 @@
     [self.view addSubview:_remindLabel];
 
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    dismissBtn.frame = CGRectMake(AppManger.common.screenWidth - WBFit(70), WBFit(20), WBFit(70), WBFit(50));
+    dismissBtn.frame = CGRectMake(WB_Common.screenWidth - WBFit(70), WBFit(30), WBFit(70), WBFit(50));
     [dismissBtn setTitle:@"跳过" forState:UIControlStateNormal];
     [dismissBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [dismissBtn addTarget:self action:@selector(dismissBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:dismissBtn];
     
     _phoneNumTF = [[UITextField alloc] init];
-    _phoneNumTF.frame = CGRectMake(WBFit(60), WBFit(120), AppManger.common.screenWidth - WBFit(120), WBFit(45));
+    _phoneNumTF.frame = CGRectMake(WBFit(60), WBFit(120), WB_Common.screenWidth - WBFit(120), WBFit(45));
     _phoneNumTF.delegate = self;
     _phoneNumTF.font = WBFont(20);
     _phoneNumTF.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -67,14 +67,14 @@
     [_phoneNumTF becomeFirstResponder];
 
     _nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _nextBtn.frame = CGRectMake((AppManger.common.screenWidth - WBFit(100))*0.5, WBFit(200), WBFit(100), WBFit(100));
+    _nextBtn.frame = CGRectMake((WB_Common.screenWidth - WBFit(100))*0.5, WBFit(200), WBFit(100), WBFit(100));
     [_nextBtn setImage:[UIImage imageNamed:@"next_over_btn"] forState:UIControlStateNormal];
     [_nextBtn setImage:[UIImage imageNamed:@"next_btn"] forState:UIControlStateHighlighted];
     [_nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nextBtn];
     
     UIButton *protocolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    protocolBtn.frame = CGRectMake(WBFit(100), WBFit(350), AppManger.common.screenWidth - WBFit(200), WBFit(40));
+    protocolBtn.frame = CGRectMake(WBFit(100), WBFit(350), WB_Common.screenWidth - WBFit(200), WBFit(40));
     protocolBtn.titleLabel.font = WBFont(16);
     [protocolBtn setTitle:@"我同意倍速课堂的用户协议" forState:UIControlStateNormal];
     [protocolBtn setTitleColor:[WBTools colorWithHexValue:0x804120] forState:UIControlStateNormal];
@@ -97,7 +97,7 @@
 
 //协议
 - (void)protocolBtnClick {
-    WebViewController *web = [[WebViewController alloc] init];
+    WBWebViewController *web = [[WBWebViewController alloc] init];
     web.detailUrl = @"http://www.beisu100.com/beisuapp/article/reginfo/aid/13";
     [self.navigationController pushViewController:web animated:YES];
 }
@@ -122,7 +122,7 @@
     
     _nextBtn.enabled = NO;
     
-    [[WBNetwork networkManger] requestGet:[NSString stringWithFormat:@"%@/mobile/%@",AppManger.network.userIsRegist, _phoneNumTF.text]
+    [[WBNetwork networkManger] requestGet:[NSString stringWithFormat:@"%@/mobile/%@",WB_Network.userIsRegist, _phoneNumTF.text]
                                   success:^(id response) {
                                       _nextBtn.enabled = YES;
                                       WBModel *model = [WBModel modelWithKeyValues:(id)response];
@@ -140,7 +140,7 @@
                                   } failure:^(NSError *error) {
                                       _nextBtn.enabled = YES;
                                       [self shake:_phoneNumTF];
-                                      _remindLabel.text = AppManger.network.errorMsg;
+                                      _remindLabel.text = WB_Network.errorMsg;
                                       _remindLabel.textColor = [WBTools colorWithHexValue:0x800000];
                                   }];
 }

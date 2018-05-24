@@ -40,7 +40,7 @@
         [self setupViewControllers:self.controllerArray];
         [self setupTabbarView];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginController) name:AppManger.common.noticeShowLogin object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginController) name:WB_Common.noticeShowLogin object:nil];
 
     }
     return self;
@@ -66,7 +66,7 @@
 
 - (void)setupTabbarView {
     
-    self.tabBarView = [[UIView alloc] initWithFrame:CGRectMake(0,0,AppManger.common.screenWidth,self.tabBarHeight)];
+    self.tabBarView = [[UIView alloc] initWithFrame:CGRectMake(0,0,WB_Common.screenWidth,self.tabBarHeight)];
     [self.tabBar addSubview:self.tabBarView];
     
     [self.tabBar setShadowImage:[[UIImage alloc] init]];
@@ -79,11 +79,11 @@
     int num = (int)self.controllerArray.count;
     for(int i = 0; i < num; i++) {
         
-        WBTabbarButton *button = [[WBTabbarButton alloc] initWithFrame:CGRectMake(AppManger.common.screenWidth/num*i, 0, AppManger.common.screenWidth/num, self.tabBarHeight)];
+        WBTabbarButton *button = [[WBTabbarButton alloc] initWithFrame:CGRectMake(WB_Common.screenWidth/num*i, 0, WB_Common.screenWidth/num, self.tabBarHeight)];
         button.tag = 1000 + i;
         button.titleLabel.font = [UIFont systemFontOfSize:11];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [button setTitleColor:AppManger.common.defaultThemeColor forState:UIControlStateSelected];
+        [button setTitleColor:WB_Common.defaultThemeColor forState:UIControlStateSelected];
         [button setTitle:self.titleArray[i] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:self.imageArray[i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:self.selImageArray[i]] forState:UIControlStateSelected];
